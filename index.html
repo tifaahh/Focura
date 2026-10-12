@@ -1,40 +1,686 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Attention Gym</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>FOCURA — Digital Detox Guide + Bonus Q&A</title>
+<meta name="description" content="E-book panduan digital well-being untuk mahasiswa & pekerja muda. Beli sekarang, dapat bonus sesi Q&A 20 menit via WhatsApp." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <header>
-    <h1>Attention Gym</h1>
-    <p>Latih fokusmu, detox digital dengan sadar.</p>
-  </header>
 
-  <main>
-    <section>
-      <h2>Timer Fokus 25 Menit</h2>
-      <div id="timer">25:00</div>
-      <button id="start">Mulai</button>
-      <button id="reset">Reset</button>
-    </section>
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo" aria-label="FOCURA — Beranda">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="20" fill="#E4EFDE"/>
+        <path d="M20 31C20 23.5 22.4 17.8 28.5 13.5C28.8 21.6 26.2 27.6 20 31Z" fill="#4A7A5C"/>
+        <path d="M20 31C20 23.5 17.6 17.8 11.5 13.5C11.2 21.6 13.8 27.6 20 31Z" fill="#7FAE87"/>
+        <path d="M20 33V20" stroke="#22392C" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
+      </svg>
+      <span class="logo-text">FOCURA</span>
+    </a>
 
-    <section>
-      <h2>Latihan Pernapasan 4-7-8</h2>
-      <p>Tarik napas 4 detik, tahan 7 detik, buang 8 detik.</p>
-      <button id="breath">Mulai Latihan</button>
-    </section>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#how">How It Works</a>
+      <a href="#features">Features</a>
+      <a href="#ebook">E-Book</a>
+      <a href="#bonus">Bonus</a>
+    </nav>
 
-    <section>
-      <h2>Progress</h2>
-      <p>Total Menit Fokus: <span id="total">0</span></p>
-    </section>
-  </main>
+    <button class="nav-toggle" id="navToggle" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-  <a href="https://wa.me/6281234567890?text=Halo,%20saya%20mau%20konsultasi"
-     class="wa" target="_blank">💬 Chat Konsultasi</a>
+<main>
 
-  <script src="script.js"></script>
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+  </div>
+
+  <div class="container hero-grid">
+
+    <div class="hero-copy" data-reveal>
+      <span class="hero-badge"><i>🌿</i> Digital Well-being Companion</span>
+
+      <h1>Bangun kebiasaan digital yang <span class="hl">lebih sehat</span> — tanpa rasa bersalah.</h1>
+
+      <p class="hero-desc">
+        FOCURA membantumu memahami pola penggunaan gadget, meningkatkan fokus,
+        dan menemukan keseimbangan teknologi. Mulai dari satu e-book praktis
+        yang bisa kamu baca hari ini.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#ebook" class="btn btn-primary">
+          Dapatkan E-Book
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6"/>
+          </svg>
+        </a>
+        <a href="#bonus" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 12v9H4v-9M2 7h20v5H2zM12 21V7M12 7a3 3 0 1 0-3-3c0 2 3 3 3 3zM12 7a3 3 0 1 1 3-3c0 2-3 3-3 3z"/>
+          </svg>
+          Lihat Bonus
+        </a>
+      </div>
+
+      <p class="hero-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 6 9 17l-5-5"/>
+        </svg>
+        Bonus Q&amp;A 20 menit · Kirim instan · Rp 49.000
+      </p>
+    </div>
+
+    <div class="hero-art" data-reveal>
+      <svg viewBox="0 0 460 460" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
+           aria-label="Ilustrasi seseorang duduk tenang menggunakan teknologi secara seimbang">
+        <circle cx="230" cy="230" r="196" fill="#EDF4E8"/>
+        <circle cx="230" cy="230" r="196" stroke="#D6E6CF" stroke-width="1.5" stroke-dasharray="6 11"/>
+
+        <path d="M96 372c-5-26 7-46 30-54 2 26-8 46-30 54z" fill="#9CC194"/>
+        <path d="M104 374c-14-18-14-38-2-54 12 16 14 36 2 54z" fill="#B9D4B4"/>
+        <path d="M364 372c5-26-7-46-30-54-2 26 8 46 30 54z" fill="#9CC194"/>
+        <path d="M356 374c14-18 14-38 2-54-12 16-14 36-2 54z" fill="#D3E6CE"/>
+
+        <circle cx="118" cy="150" r="5" fill="#B9D4B4"/>
+        <circle cx="352" cy="128" r="7" fill="#D3E6CE"/>
+        <circle cx="376" cy="212" r="4" fill="#9CC194"/>
+        <circle cx="96" cy="228" r="4" fill="#D3E6CE"/>
+
+        <ellipse cx="230" cy="374" rx="128" ry="20" fill="#DFEBD6"/>
+        <rect x="156" y="322" width="148" height="48" rx="24" fill="#86B58C"/>
+        <ellipse cx="198" cy="334" rx="25" ry="11" fill="#7FAE87"/>
+        <ellipse cx="262" cy="334" rx="25" ry="11" fill="#7FAE87"/>
+
+        <path d="M202 250c-22 22-30 56-24 82" stroke="#A8C6A1" stroke-width="17" stroke-linecap="round"/>
+        <path d="M258 250c22 22 30 56 24 82" stroke="#A8C6A1" stroke-width="17" stroke-linecap="round"/>
+        <path d="M230 226c-24 0-34 18-36 44l-4 58c26 12 54 12 80 0l-4-58c-2-26-12-44-36-44z" fill="#A8C6A1"/>
+
+        <circle cx="178" cy="334" r="10" fill="#EFC9A4"/>
+        <circle cx="282" cy="334" r="10" fill="#EFC9A4"/>
+        <rect x="221" y="204" width="18" height="28" rx="9" fill="#E3B892"/>
+        <circle cx="199" cy="192" r="6" fill="#EFC9A4"/>
+        <circle cx="261" cy="192" r="6" fill="#EFC9A4"/>
+        <circle cx="230" cy="190" r="32" fill="#EFC9A4"/>
+        <path d="M198 182c-2-26 12-38 32-38s34 12 32 38c-4-14-16-22-32-22s-28 8-32 22z" fill="#3E5A48"/>
+
+        <path d="M214 190q5 5 10 0" stroke="#3E5A48" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+        <path d="M236 190q5 5 10 0" stroke="#3E5A48" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+        <path d="M222 205q8 7 16 0" stroke="#3E5A48" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+        <ellipse cx="209" cy="201" rx="6" ry="4" fill="#E9A98F" opacity=".35"/>
+        <ellipse cx="251" cy="201" rx="6" ry="4" fill="#E9A98F" opacity=".35"/>
+      </svg>
+
+      <div class="float-card fc-1">
+        <div class="ring"><span>25</span></div>
+        <div class="fc-text">
+          <strong>Focus Session</strong>
+          <span>Deep work · 25 min</span>
+        </div>
+      </div>
+
+      <div class="float-card fc-2">
+        <div class="fc-col">
+          <span class="fc-label">Screen time today</span>
+          <strong>2h 14m</strong>
+          <div class="bars" aria-hidden="true">
+            <i style="height:38%"></i><i class="on" style="height:72%"></i>
+            <i style="height:52%"></i><i class="on" style="height:88%"></i>
+            <i style="height:44%"></i><i class="on" style="height:64%"></i>
+            <i style="height:30%"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+============================================================ -->
+<section class="section section--white" id="about">
+  <div class="container">
+
+    <div class="about-grid">
+      <div data-reveal>
+        <span class="eyebrow">About FOCURA</span>
+        <h2>Teman sederhana untuk kebiasaan digital yang lebih sehat.</h2>
+      </div>
+      <div data-reveal>
+        <p class="lead">
+          FOCURA membantumu memahami kebiasaan digital, meningkatkan fokus, dan
+          membangun rutinitas yang lebih sehat — tanpa membuatmu merasa terbebani.
+        </p>
+        <p class="muted-para">
+          Pendekatannya lembut: mengamati dulu, memperbaiki sedikit demi sedikit,
+          lalu merayakan kemajuan kecil yang konsisten.
+        </p>
+      </div>
+    </div>
+
+    <div class="value-grid">
+      <article class="value-card" data-reveal>
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21c0-6 2.5-10 8-12-.4 7-3 11-8 12Z"/>
+            <path d="M12 21c0-6-2.5-10-8-12 .4 7 3 11 8 12Z"/>
+            <path d="M12 21V9"/>
+          </svg>
+        </div>
+        <h3>Sadar, bukan menghakimi</h3>
+        <p>Kenali pola penggunaan gadgetmu lewat ringkasan sederhana — tanpa angka yang membuat cemas.</p>
+      </article>
+      <article class="value-card" data-reveal>
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 12h9"/>
+          </svg>
+        </div>
+        <h3>Fokus yang realistis</h3>
+        <p>Sesi fokus singkat yang bisa kamu jalani di sela kuliah, kerja, atau waktu luang.</p>
+      </article>
+      <article class="value-card" data-reveal>
+        <div class="value-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19V7a3 3 0 0 1 3-3h13v13H7a3 3 0 0 0-3 3Z"/>
+            <path d="M8 8h8M8 12h5"/>
+          </svg>
+        </div>
+        <h3>Tumbuh perlahan</h3>
+        <p>Catat kebiasaan dan lakukan refleksi singkat agar perubahan terasa bertahan lama.</p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS
+============================================================ -->
+<section class="section" id="how">
+  <div class="container">
+
+    <div class="section-head section-head--center" data-reveal>
+      <span class="eyebrow">How It Works</span>
+      <h2>Tiga langkah sederhana menuju digital life yang lebih seimbang</h2>
+      <p>Tanpa proses rumit. Cukup mulai dari hal kecil, lalu biarkan kebiasaan itu tumbuh.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step" data-reveal>
+        <span class="step-num">01</span>
+        <h3>Understand Your Habits</h3>
+        <p>Lihat gambaran sederhana tentang kapan dan bagaimana kamu menggunakan perangkat.</p>
+        <ul class="step-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ringkasan screen time harian</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Menandai waktu rawan distraksi</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Insight yang mudah dipahami</li>
+        </ul>
+      </article>
+
+      <article class="step" data-reveal>
+        <span class="step-num">02</span>
+        <h3>Build Your Focus</h3>
+        <p>Mulai sesi fokus singkat dengan pengaturan waktu fokus dan istirahat yang mudah.</p>
+        <ul class="step-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Timer fokus 25 menit + jeda 5 menit</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Satu sesi, satu tugas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Bisa kapan saja, di sela kesibukan</li>
+        </ul>
+      </article>
+
+      <article class="step" data-reveal>
+        <span class="step-num">03</span>
+        <h3>Reflect and Grow</h3>
+        <p>Tulis refleksi singkat dan catat kebiasaanmu agar setiap langkah kecil terasa berarti.</p>
+        <ul class="step-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Jurnal refleksi 1 menit di akhir hari</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Checklist kebiasaan digital harian</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Progres mingguan untuk konsistensi</li>
+        </ul>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURES
+============================================================ -->
+<section class="section section--white" id="features">
+  <div class="container">
+
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Main Features</span>
+      <h2>Fitur dasar yang benar-benar kamu butuhkan</h2>
+      <p>Dirancang ringan dan fokus pada hal yang paling berdampak untuk kebiasaan digitalmu.</p>
+    </div>
+
+    <div class="feature-grid">
+
+      <article class="feature-card" data-reveal>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/>
+          </svg>
+        </div>
+        <h3>Focus Session</h3>
+        <p>Timer sederhana untuk fokus tanpa gangguan notifikasi, lalu ambil jeda yang cukup.</p>
+        <ul class="feature-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Timer fokus &amp; istirahat siap pakai</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pengingat jeda agar mata tidak lelah</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Cocok untuk belajar atau bekerja</li>
+        </ul>
+        <span class="feature-tag">Timer fokus</span>
+      </article>
+
+      <article class="feature-card" data-reveal>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="4"/><path d="M8 15v-3M12 15V9M16 15v-5"/>
+          </svg>
+        </div>
+        <h3>Digital Well-being Dashboard</h3>
+        <p>Ringkasan sederhana kebiasaan penggunaan perangkatmu — tanpa data yang membingungkan.</p>
+        <ul class="feature-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Ringkasan screen time harian</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Insight kebiasaan yang mudah dibaca</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fokus pada pola, bukan angka</li>
+        </ul>
+        <span class="feature-tag">Ringkasan kebiasaan</span>
+      </article>
+
+      <article class="feature-card" data-reveal>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 4a2 2 0 0 1 2-2h11v18H7a2 2 0 0 0-2 2V4Z"/><path d="M9 7h6M9 11h4"/>
+          </svg>
+        </div>
+        <h3>Habit &amp; Reflection</h3>
+        <p>Catat kebiasaan harian dan tulis refleksi singkat. Membantu melihat kemajuan langkahmu.</p>
+        <ul class="feature-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Checklist kebiasaan digital harian</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Jurnal refleksi singkat 1 menit</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Riwayat progres untuk konsistensi</li>
+        </ul>
+        <span class="feature-tag">Catatan &amp; refleksi</span>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     E-BOOK SHOWCASE
+============================================================ -->
+<section class="section ebook-section" id="ebook">
+  <div class="container">
+
+    <div class="section-head section-head--center" data-reveal>
+      <span class="eyebrow">E-Book FOCURA</span>
+      <h2>Panduan digital well-being yang bisa kamu praktikkan hari ini</h2>
+      <p>Satu e-book, banyak perubahan kecil yang nyata. Dibuat ringkas &amp; aplikatif.</p>
+    </div>
+
+    <div class="ebook-showcase">
+
+      <div class="ebook-visual" data-reveal>
+        <span class="ebook-flag">Edisi 2025</span>
+        <div class="ebook-book">
+          <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cover E-Book FOCURA: Digital Detox Guide">
+            <defs>
+              <linearGradient id="ebookBg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#4A7A5C"/>
+                <stop offset="100%" stop-color="#22392C"/>
+              </linearGradient>
+              <linearGradient id="ebookAccent" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#B9D4B4"/>
+                <stop offset="100%" stop-color="#7FAE87"/>
+              </linearGradient>
+            </defs>
+
+            <rect width="300" height="400" fill="url(#ebookBg)"/>
+            <circle cx="240" cy="70" r="130" fill="#9CC194" opacity=".15"/>
+            <circle cx="50" cy="340" r="100" fill="#B9D4B4" opacity=".12"/>
+
+            <g opacity=".85">
+              <path d="M150 320c-14-38 4-70 40-82 4 38-12 72-40 82z" fill="url(#ebookAccent)"/>
+              <path d="M150 320c-14-38-32-62-68-72 6 36 28 62 68 72z" fill="#9CC194" opacity=".85"/>
+              <path d="M150 326V232" stroke="#E4EFDE" stroke-width="1.8" stroke-linecap="round" opacity=".6"/>
+              <ellipse cx="150" cy="326" rx="42" ry="6" fill="#22392C" opacity=".25"/>
+            </g>
+
+            <text x="30" y="56" fill="#E4EFDE" font-family="Plus Jakarta Sans, sans-serif" font-size="10" font-weight="700" letter-spacing="3.5">FOCURA PUBLISHING</text>
+
+            <text x="30" y="132" fill="#fff" font-family="Plus Jakarta Sans, sans-serif" font-size="30" font-weight="800">Digital</text>
+            <text x="30" y="166" fill="#fff" font-family="Plus Jakarta Sans, sans-serif" font-size="30" font-weight="800">Detox</text>
+            <text x="30" y="200" fill="#B9D4B4" font-family="Plus Jakarta Sans, sans-serif" font-size="30" font-weight="800">Guide</text>
+
+            <rect x="30" y="220" width="44" height="3" rx="1.5" fill="#B9D4B4"/>
+
+            <text x="30" y="252" fill="#D3E6CE" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="500">7 langkah mengurangi</text>
+            <text x="30" y="270" fill="#D3E6CE" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="500">screen time berlebih —</text>
+            <text x="30" y="288" fill="#D3E6CE" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="500">tanpa rasa bersalah.</text>
+
+            <text x="30" y="378" fill="#B9D4B4" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="600" letter-spacing="2.5">42 HALAMAN · PDF</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="ebook-info" data-reveal>
+        <span class="eyebrow">E-Book Panduan</span>
+        <h2>Digital Detox Guide</h2>
+
+        <p class="ebook-sub">
+          Panduan 7 langkah praktis untuk mengurangi screen time berlebih —
+          tanpa harus lepas dari teknologi. Cocok untuk mahasiswa &amp; pekerja
+          muda yang ingin fokus kembali.
+        </p>
+
+        <ul class="ebook-highlights">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>
+            Bahasa ringan &amp; mudah dipraktikkan — tidak menggurui
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>
+            Ada latihan refleksi + checklist di setiap bab
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>
+            Bisa dibaca dalam 1 duduk, langsung bisa diterapkan
+          </li>
+        </ul>
+
+        <div class="ebook-chapters">
+          <h4>Isi E-Book</h4>
+          <ol>
+            <li><span>1</span>Kenali pola digitalmu</li>
+            <li><span>2</span>Rapikan notifikasi</li>
+            <li><span>3</span>Bangun sesi fokus 25 menit</li>
+            <li><span>4</span>Rutinitas pagi tanpa HP</li>
+            <li><span>5</span>Jeda sadar di siang hari</li>
+            <li><span>6</span>Malam yang lebih tenang</li>
+            <li><span>7</span>Refleksi mingguan</li>
+            <li><span>+</span>Bonus: 30 checklist harian</li>
+          </ol>
+        </div>
+
+        <div class="ebook-buy">
+          <div class="ebook-buy-price">
+            <small><s>Rp 79.000</s> Harga perkenalan</small>
+            <strong><em>Rp</em> 49.000</strong>
+          </div>
+
+          <div class="ebook-buy-action">
+            <a class="btn btn-primary btn-lg"
+               href="https://wa.me/6289512707276?text=Halo%20FOCURA%2C%20saya%20ingin%20membeli%20e-book%20Digital%20Detox%20Guide."
+               target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+                <path d="M3 6h18M16 10a4 4 0 0 1-8 0"/>
+              </svg>
+              Beli via WhatsApp
+            </a>
+            <p class="ebook-trust">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+              Kirim instan · Bonus Q&amp;A 20 menit
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     BONUS SECTION (Q&A GRATIS)
+============================================================ -->
+<section class="section section--white" id="bonus">
+  <div class="container">
+
+    <div class="bonus-card" data-reveal>
+
+      <div class="bonus-badge">🎁 Bonus untuk Pembeli E-Book</div>
+
+      <div class="bonus-grid">
+
+        <div class="bonus-content">
+          <h2>Dapat sesi Q&amp;A gratis 20 menit via WhatsApp</h2>
+          <p class="bonus-lead">
+            Setelah beli e-book, kamu dapat <strong>sesi tanya-jawab personal 20 menit</strong>
+            lewat WhatsApp. Bukan konsultasi formal — cukup ngobrol santai untuk
+            membahas kondisi kebiasaan digitalmu &amp; menyusun langkah awal.
+          </p>
+
+          <ul class="bonus-list">
+            <li>
+              <div class="bonus-list-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 20.5l1.6-4.7A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4Z"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Ngobrol santai 20 menit</strong>
+                <p>Ceritakan kondisi kebiasaan digitalmu, aku bantu petakan langkah awalnya.</p>
+              </div>
+            </li>
+            <li>
+              <div class="bonus-list-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 11l3 3L22 4"/>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Rencana awal yang personal</strong>
+                <p>Kamu pulang dengan 2-3 langkah kecil yang bisa langsung dipraktikkan.</p>
+              </div>
+            </li>
+            <li>
+              <div class="bonus-list-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="10" width="16" height="11" rx="3"/>
+                  <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Privat &amp; tanpa paksaan</strong>
+                <p>Cukup lewat WhatsApp. Tidak ada tawaran jualan — murni sesi bantu.</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="bonus-actions">
+            <a class="btn btn-whatsapp btn-lg"
+               href="https://wa.me/6289512707276?text=Halo%20FOCURA%2C%20saya%20ingin%20membeli%20e-book%20Digital%20Detox%20Guide%20%2B%20bonus%20Q%26A%2020%20menit."
+               target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.94 7.94 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58ZM12.06 18.5h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.6 6.6 0 0 1 10.27-8.2 6.55 6.55 0 0 1 1.94 4.66 6.6 6.6 0 0 1-6.61 6.63Zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64-.18-.07-.32-.1-.45.1s-.51.65-.63.78c-.11.13-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.98 6 6 0 0 1-1.1-1.38c-.12-.2 0-.31.09-.41l.3-.35c.1-.11.13-.2.2-.33.06-.13.03-.25-.02-.35-.05-.1-.45-1.08-.61-1.47-.16-.38-.33-.33-.45-.34h-.38a.73.73 0 0 0-.53.25 2.22 2.22 0 0 0-.7 1.66 3.85 3.85 0 0 0 .81 2.05 8.83 8.83 0 0 0 3.37 2.98c.47.2.84.33 1.13.42.47.15.9.13 1.24.08.38-.06 1.17-.48 1.34-.94.16-.46.16-.86.11-.94-.04-.08-.17-.13-.36-.23Z"/>
+              </svg>
+              Beli E-Book + Bonus Q&amp;A — Rp 49.000
+            </a>
+            <p class="bonus-note">
+              Bonus otomatis dikirim setelah pembelian via WhatsApp.
+            </p>
+          </div>
+        </div>
+
+        <div class="bonus-visual">
+          <div class="chat">
+            <div class="chat-head">
+              <div class="chat-avatar">F</div>
+              <div>
+                <strong>FOCURA Q&amp;A</strong>
+                <small>Online</small>
+              </div>
+            </div>
+            <div class="chat-body">
+              <div class="bubble in">Halo! Aku baru beli e-book-nya, mau pakai bonus Q&amp;A 🌿</div>
+              <div class="bubble out">Halo! Senang kamu di sini. Ceritakan dulu kebiasaan digitalmu ya 😊</div>
+              <div class="bubble in">Sering scroll sampai lupa waktu, jadi susah fokus belajar.</div>
+              <div class="bubble out">Tenang, kita susun pelan-pelan. Mulai dari sesi fokus 25 menit dulu ya ✨</div>
+            </div>
+            <div class="chat-foot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="10" width="16" height="11" rx="3"/>
+                <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+              </svg>
+              Percakapan privat via WhatsApp.
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA
+============================================================ -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta-panel" data-reveal>
+      <div class="cta-inner">
+        <h2>Mulai dari satu langkah kecil hari ini.</h2>
+        <p>
+          Dapatkan e-book panduan digital detox + bonus sesi Q&amp;A 20 menit.
+          Tanpa tekanan, tanpa rasa bersalah.
+        </p>
+        <div class="cta-actions">
+          <a href="#ebook" class="btn btn-light">
+            Dapatkan E-Book
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="footer">
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="#" class="logo" aria-label="FOCURA">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="20" cy="20" r="20" fill="rgba(255,255,255,.12)"/>
+            <path d="M20 31C20 23.5 22.4 17.8 28.5 13.5C28.8 21.6 26.2 27.6 20 31Z" fill="#9CC194"/>
+            <path d="M20 31C20 23.5 17.6 17.8 11.5 13.5C11.2 21.6 13.8 27.6 20 31Z" fill="#7FAE87"/>
+            <path d="M20 33V20" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".5"/>
+          </svg>
+          <span class="logo-text">FOCURA</span>
+        </a>
+
+        <p class="footer-desc">
+          FOCURA membantu kamu memahami kebiasaan digital, meningkatkan fokus,
+          dan membangun rutinitas yang lebih sehat.
+        </p>
+
+        <div class="socials">
+          <a href="#" aria-label="Instagram FOCURA">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn FOCURA">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="4"/>
+              <path d="M7.5 10.5V17M7.5 7.3v.01M11.5 17v-3.6a2.1 2.1 0 0 1 4.2 0V17"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/6289512707276" target="_blank" rel="noopener" aria-label="WhatsApp FOCURA">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.94 7.94 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58ZM12.06 18.5h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.6 6.6 0 0 1 10.27-8.2 6.55 6.55 0 0 1 1.94 4.66 6.6 6.6 0 0 1-6.61 6.63Z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Navigasi</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#ebook">E-Book</a></li>
+          <li><a href="#bonus">Bonus Q&amp;A</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Kontak</h4>
+        <ul>
+          <li>
+            <a class="footer-contact" href="https://wa.me/6289512707276?text=Halo%20FOCURA%2C%20saya%20ingin%20bertanya." target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.94 7.94 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58ZM12.06 18.5h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.49.65.66-2.43-.16-.25a6.6 6.6 0 0 1 10.27-8.2 6.55 6.55 0 0 1 1.94 4.66 6.6 6.6 0 0 1-6.61 6.63Z"/>
+              </svg>
+              +62 895-1270-7276
+            </a>
+          </li>
+          <li>
+            <a class="footer-contact" href="mailto:hello@focura.app">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="3"/>
+                <path d="m4 7 8 6 8-6"/>
+              </svg>
+              hello@focura.app
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 FOCURA. Building a healthier digital life for everyone.</span>
+      <span>Prototype MVP · Digital Well-being Companion</span>
+    </div>
+
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
 </body>
 </html>
