@@ -320,6 +320,55 @@ textarea.form-control{resize:vertical;min-height:120px}
   box-shadow: 0 6px 15px rgba(26, 115, 232, 0.2);
 }
 /* ============================================================
+   UPLOAD BUKTI TRANSFER
+============================================================ */
+.upload-area {
+  background: #F9FBF8;
+  border: 2px dashed var(--green-300);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: center;
+  margin: 20px 0;
+  transition: all 0.3s;
+}
+.upload-area:hover {
+  border-color: var(--green-500);
+  background: var(--green-50);
+}
+.upload-area input[type="file"] {
+  display: none;
+}
+.upload-label {
+  display: inline-block;
+  cursor: pointer;
+  color: var(--green-700);
+  font-weight: 600;
+  font-size: 14px;
+}
+.upload-label svg {
+  width: 24px;
+  height: 24px;
+  margin: 0 auto 8px;
+  color: var(--green-500);
+}
+.upload-filename {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+#accessBox {
+  display: none;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 2px dashed var(--green-300);
+  animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* ============================================================
    FOOTER
 ============================================================ */
 .footer{background:var(--green-900);color:#B8C9BD;padding:64px 0 0}
