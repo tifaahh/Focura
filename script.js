@@ -1,67 +1,84 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // 1. Navbar Active State
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  const navLinks = document.querySelectorAll('.nav-links a');
-  
-  navLinks.forEach(link => {
-    if (link.getAttribute('href') === currentPath) {
-      link.classList.add('is-active');
-    }
-  });
+/* ============================================================
+   REVIEW & TESTIMONIALS
+============================================================ */
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
 
-  // 2. Order Form Logic (Reservation/Order)
-  const orderForm = document.getElementById('orderForm');
-  const receiptBox = document.getElementById('receiptBox');
-  const receiptContent = document.getElementById('receiptContent');
-  const waBtn = document.getElementById('waBtn');
+.review-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
 
-  if (orderForm) {
-    // Set default product from URL params (e.g., order.html?product=ebook)
-    const urlParams = new URLSearchParams(window.location.search);
-    const prodParam = urlParams.get('product');
-    if (prodParam) {
-      document.getElementById('productSelect').value = prodParam;
-    }
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
 
-    orderForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      
-      const name = document.getElementById('custName').value;
-      const wa = document.getElementById('custWa').value;
-      const product = document.getElementById('productSelect').value;
-      
-      let price = 0;
-      let productName = '';
-      
-      if (product === 'ebook') {
-        price = 49000;
-        productName = 'E-Book: Digital Detox Guide';
-      } else if (product === 'consult') {
-        price = 150000;
-        productName = 'Konsultasi 1-on-1 (30 Menit)';
-      } else if (product === 'bundle') {
-        price = 179000;
-        productName = 'Bundle: E-Book + Konsultasi';
-      }
-      
-      const orderId = 'ORD-' + Math.floor(1000 + Math.random() * 9000);
-      const priceFormatted = price.toLocaleString('id-ID');
-      
-      // Render Receipt
-      receiptContent.innerHTML = `
-        <div class="receipt-row"><span>Order ID</span><strong>${orderId}</strong></div>
-        <div class="receipt-row"><span>Nama Pemesan</span><strong>${name}</strong></div>
-        <div class="receipt-row"><span>WhatsApp</span><strong>${wa}</strong></div>
-        <div class="receipt-row"><span>Produk / Layanan</span><strong>${productName}</strong></div>
-        <div class="receipt-row"><span>Total Pembayaran</span><strong>Rp ${priceFormatted}</strong></div>
-      `;
-      
-      orderForm.style.display = 'none';
-      receiptBox.style.display = 'block';
-      
-      // Setup WhatsApp Link for Payment Confirmation
-      const waText = encodeURIComponent(`Halo Admin FOCURA, saya ingin mengonfirmasi pesanan saya.\n\n*Order ID:* ${orderId}\n*Nama:* ${name}\n*Produk:* ${productName}\n*Total:* Rp ${priceFormatted}\n\nMohon kirimkan instruksi pembayaran selanjutnya. Terima kasih.`);
-      waBtn.href = `https://wa.me/6289512707276?text=${waText}`;
-    });
-  }
-});
+.review-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--green-100);
+  color: var(--green-700);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.review-meta h4 {
+  font-size: 16px;
+  color: var(--green-900);
+  margin-bottom: 4px;
+}
+
+.review-stars {
+  color: #F5B041;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.review-text {
+  font-size: 15px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Form Review */
+.form-review-wrapper {
+  background: var(--green-50);
+  border: 1px dashed var(--green-300);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.star-rating {
+  display: flex;
+  gap: 8px;
+  font-size: 28px;
+  color: var(--green-200);
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.star-rating span.active {
+  color: #F5B041;
+}
+
+.star-rating span:hover {
+  color: #F5B041;
+}
