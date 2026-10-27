@@ -80,31 +80,52 @@
           <!-- Diisi otomatis oleh JavaScript -->
         </div>
 
-        <!-- AREA TOMBOL AKSI -->
-        <div style="margin-top:28px; padding-top:24px; border-top:2px dashed var(--green-300);">
+        <!-- AREA INSTRUKSI PEMBAYARAN & UPLOAD -->
+        <div style="margin-top:28px; padding-top:24px; border-top:2px dashed var(--green-200);">
           
-          <!-- LANGKAH 1: KONFIRMASI WA -->
-          <p style="font-size:14px; text-align:center; margin-bottom:12px; font-weight:600; color:var(--green-900);">
-            Langkah 1: Konfirmasi & Bayar
+          <!-- INSTRUKSI TRANSFER -->
+          <p style="font-size:15px; font-weight:700; margin-bottom:8px; color:var(--green-900); text-align:center;">
+            Silakan Transfer ke GoPay / DANA:
           </p>
-          <a id="waBtn" href="#" target="_blank" class="btn btn-whatsapp btn-lg" style="width:100%;">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:8px;"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.94 7.94 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58Z"/></svg>
-            Konfirmasi via WhatsApp
-          </a>
+          <p style="font-size:20px; font-weight:800; color:var(--green-700); text-align:center; margin-bottom:16px;">
+            0895-1270-7276
+          </p>
           
-          <div style="text-align:center; margin:20px 0; color:var(--muted); font-size:12px; font-weight:700;">ATAU</div>
+          <!-- TOMBOL KONFIRMASI KE WA -->
+          <a id="waBtn" href="#" target="_blank" class="btn btn-whatsapp" style="width:100%; margin-bottom:24px;">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right:6px;"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.94 7.94 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58Z"/></svg>
+            Konfirmasi Pembayaran via WA
+          </a>
 
-          <!-- LANGKAH 2: AKSES GDRIVE -->
-          <p style="font-size:14px; text-align:center; margin-bottom:12px; font-weight:600; color:var(--green-900);">
-            Langkah 2: Akses E-Book
+          <p style="font-size:15px; font-weight:700; margin-bottom:12px; color:var(--green-900); text-align:center;">
+            Upload Bukti Transfer
           </p>
-          <p style="font-size:12px; text-align:center; margin-bottom:12px; color:var(--muted);">
-            (Pastikan Anda sudah melakukan pembayaran sebelum mengakses)
-          </p>
-          <a id="driveBtn" href="#" target="_blank" class="btn btn-drive">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:8px;"><path d="M14.4 6L10.5 12H16L19.5 6H14.4ZM8.8 6L4 14.2L6.8 19L11.6 10.8L8.8 6ZM14.5 18L10.4 11H4.5L8.5 18H14.5ZM15.4 18L20 10.2L17.2 5.5L12.6 13.3L15.4 18Z"/></svg>
-            Buka E-Book (Google Drive)
-          </a>
+          
+          <!-- AREA UPLOAD FILE -->
+          <div class="upload-area">
+            <label for="proofUpload" class="upload-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Pilih File Gambar (Screenshot Transfer)
+            </label>
+            <input type="file" id="proofUpload" accept="image/*" onchange="document.getElementById('fileName').textContent = this.files[0].name">
+            <span id="fileName" class="upload-filename">Belum ada file yang dipilih</span>
+          </div>
+
+          <!-- TOMBOL VERIFIKASI -->
+          <button id="verifyBtn" class="btn btn-primary" style="width:100%; margin-top:8px;">
+            Verifikasi & Dapatkan Akses
+          </button>
+
+          <!-- AREA AKSES E-BOOK (Tersembunyi di awal) -->
+          <div id="accessBox">
+            <p style="text-align:center; font-size:14px; color:var(--green-700); font-weight:600; margin-bottom:12px;">
+              ✅ Bukti diterima. Silakan akses E-Book Anda:
+            </p>
+            <a id="driveBtn" href="#" target="_blank" class="btn btn-drive" style="width:100%;">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:8px;"><path d="M14.4 6L10.5 12H16L19.5 6H14.4ZM8.8 6L4 14.2L6.8 19L11.6 10.8L8.8 6ZM14.5 18L10.4 11H4.5L8.5 18H14.5ZM15.4 18L20 10.2L17.2 5.5L12.6 13.3L15.4 18Z"/></svg>
+              Buka E-Book (Google Drive)
+            </a>
+          </div>
 
         </div>
       </div>
