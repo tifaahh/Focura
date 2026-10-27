@@ -79,7 +79,74 @@
     </div>
   </div>
 </section>
+<!-- SECTION REVIEW & TESTIMONI -->
+<section class="section section--cream" id="reviews">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">Apa Kata Mereka?</span>
+      <h2>Testimoni Pelanggan FOCURA</h2>
+      <p>Bukti nyata dari mereka yang sudah memulai perjalanan digital well-being.</p>
+    </div>
 
+    <!-- Tempat Review akan ditampilkan oleh JavaScript -->
+    <div class="review-grid" id="reviewList">
+      <!-- Review Default (Bawaan) -->
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">B</div>
+          <div class="review-meta">
+            <h4>Budi Santoso</h4>
+            <div class="review-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="review-text">"E-booknya sangat relate sama kehidupan mahasiswa. Bahasanya nggak bikin stres, dan tips 25 menit fokusnya beneran ngebantu aku ngerjain skripsi."</p>
+      </div>
+      
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">S</div>
+          <div class="review-meta">
+            <h4>Siti Rahma</h4>
+            <div class="review-stars">★★★★☆</div>
+          </div>
+        </div>
+        <p class="review-text">"Awalnya ragu ikut sesi konsultasi, tapi ternyata ngobrolnya santai banget. Aku jadi sadar pola scroll-ku tiap malam dan sekarang udah bisa dibatasi."</p>
+      </div>
+    </div>
+
+    <!-- Form Tambah Review -->
+    <div class="form-review-wrapper">
+      <h3 style="margin-bottom: 8px; text-align: center;">Punya pengalaman dengan FOCURA?</h3>
+      <p style="text-align: center; font-size: 14px; color: var(--muted); margin-bottom: 24px;">Bagikan reviewmu di sini sebagai bukti transaksi yang valid.</p>
+      
+      <form id="reviewForm">
+        <div class="form-group">
+          <label>Nama Kamu</label>
+          <input type="text" id="revName" class="form-control" required placeholder="Contoh: Andi Pratama">
+        </div>
+        
+        <div class="form-group">
+          <label>Rating Bintang</label>
+          <div class="star-rating" id="starContainer">
+            <span data-value="1">★</span>
+            <span data-value="2">★</span>
+            <span data-value="3">★</span>
+            <span data-value="4">★</span>
+            <span data-value="5">★</span>
+          </div>
+          <input type="hidden" id="revRating" value="5" required>
+        </div>
+
+        <div class="form-group">
+          <label>Ulasan / Testimoni</label>
+          <textarea id="revText" class="form-control" required placeholder="Tulis pengalamanmu menggunakan produk/layanan FOCURA..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Review</button>
+      </form>
+    </div>
+  </div>
+</section>
 <footer class="footer">
   <div class="container">
     <div class="footer-bottom">
