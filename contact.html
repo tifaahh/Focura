@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>FOCURA — Contact Us</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#E4EFDE"/><path d="M20 31C20 23.5 22.4 17.8 28.5 13.5C28.8 21.6 26.2 27.6 20 31Z" fill="#4A7A5C"/><path d="M20 31C20 23.5 17.6 17.8 11.5 13.5C11.2 21.6 13.8 27.6 20 31Z" fill="#7FAE87"/></svg>
+      <span class="logo-text">FOCURA</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="products.html">Product & Service</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="order.html" class="btn btn-primary btn-sm">Order Now</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section section--white">
+  <div class="container">
+    <div class="section-head section--center">
+      <span class="eyebrow">Hubungi Kami</span>
+      <h2>Ada Pertanyaan?</h2>
+      <p>Tim FOCURA siap membantu. Silakan hubungi kami melalui saluran di bawah ini.</p>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="card" style="margin-bottom:24px;">
+          <h3>Informasi Kontak</h3>
+          <ul style="margin-top:16px; display:grid; gap:16px;">
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/6289512707276" style="color:var(--green-600);">+62 895-1270-7276</a></li>
+            <li><strong>Email:</strong> <a href="mailto:hello@focura.app" style="color:var(--green-600);">hello@focura.app</a></li>
+            <li><strong>Instagram:</strong> @focura.app</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Jam Operasional</h3>
+          <p style="margin-top:10px;">Senin - Jumat: 09.00 - 17.00 WIB<br>Sabtu: 09.00 - 12.00 WIB</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Kirim Pesan</h3>
+        <p style="margin-bottom:20px; font-size:14px;">Pesanmu akan diteruskan langsung ke WhatsApp Admin.</p>
+        <form id="contactForm" onsubmit="event.preventDefault(); window.location.href='https://wa.me/6289512707276?text=' + encodeURIComponent('Halo Admin, Nama saya ' + document.getElementById('cName').value + '. ' + document.getElementById('cMsg').value);">
+          <div class="form-group">
+            <label>Nama Lengkap</label>
+            <input type="text" id="cName" class="form-control" required placeholder="Masukkan nama">
+          </div>
+          <div class="form-group">
+            <label>Pesan Anda</label>
+            <textarea id="cMsg" class="form-control" required placeholder="Tulis pertanyaan Anda di sini..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Kirim via WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 FOCURA. UTS Simulasi Bisnis Digital.</span>
+      <span>Universitas Sugeng Hartono</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
