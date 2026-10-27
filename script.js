@@ -20,22 +20,24 @@ document.addEventListener('DOMContentLoaded', function () {
     orderForm.addEventListener('submit', function (e) {
       e.preventDefault();
       
+      // Mengambil data dari form termasuk Email
       const name = document.getElementById('custName').value;
       const wa = document.getElementById('custWa').value;
+      const email = document.getElementById('custEmail').value;
       const payment = document.getElementById('paymentMethod').value;
       
-      // Harga & Produk
       let price = 5000;
       let productName = 'E-Book: Digital Wellbeing Guide';
       
       const orderId = 'ORD-' + Math.floor(1000 + Math.random() * 9000);
       const priceFormatted = price.toLocaleString('id-ID');
       
-      // Render Struk
+      // Render Struk (Menambahkan baris Email)
       receiptContent.innerHTML = `
         <div class="receipt-row"><span>Order ID</span><strong>${orderId}</strong></div>
         <div class="receipt-row"><span>Nama Pemesan</span><strong>${name}</strong></div>
         <div class="receipt-row"><span>WhatsApp</span><strong>${wa}</strong></div>
+        <div class="receipt-row"><span>Email</span><strong>${email}</strong></div>
         <div class="receipt-row"><span>Produk</span><strong>${productName}</strong></div>
         <div class="receipt-row"><span>Metode Bayar</span><strong>${payment}</strong></div>
         <div class="receipt-row"><span>Total</span><strong>Rp ${priceFormatted}</strong></div>
@@ -44,21 +46,22 @@ document.addEventListener('DOMContentLoaded', function () {
       orderForm.style.display = 'none';
       receiptBox.style.display = 'block';
       
-      // Setup Pesan Otomatis WhatsApp
+      // Setup Pesan Otomatis WhatsApp (Menyertakan Email)
       const waText = encodeURIComponent(
         `Halo Admin FOCURA, saya sudah membuat pesanan dan melakukan transfer.\n\n` +
         `*Order ID:* ${orderId}\n` +
         `*Nama:* ${name}\n` +
+        `*Email:* ${email}\n` +
         `*Produk:* ${productName}\n` +
         `*Total:* Rp ${priceFormatted}\n` +
         `*Metode Bayar:* ${payment}\n\n` +
-        `Berikut saya lampirkan bukti transfernya. Mohon kirimkan link E-Book-nya ya. Terima kasih!`
+        `Berikut saya lampirkan bukti transfernya. Mohon kirimkan E-Book-nya ke email saya ya. Terima kasih!`
       );
       waBtn.href = `https://wa.me/6289512707276?text=${waText}`;
     });
   }
 
-  // 3. REVIEW FORM LOGIC (Sama seperti sebelumnya)
+  // 3. REVIEW FORM LOGIC
   const reviewForm = document.getElementById('reviewForm');
   const reviewList = document.getElementById('reviewList');
   const starContainer = document.getElementById('starContainer');
