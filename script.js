@@ -30,17 +30,17 @@ document.addEventListener('DOMContentLoaded', function () {
       const wa = document.getElementById('custWa').value;
       const product = document.getElementById('productSelect').value;
       
-      let price = 0;
+           let price = 0;
       let productName = '';
       
       if (product === 'ebook') {
-        price = 49000;
+        price = 5000;
         productName = 'E-Book: Digital Detox Guide';
       } else if (product === 'consult') {
-        price = 150000;
+        price = 10000;
         productName = 'Konsultasi 1-on-1 (30 Menit)';
       } else if (product === 'bundle') {
-        price = 179000;
+        price = 10000;
         productName = 'Bundle: E-Book + Konsultasi';
       }
       
