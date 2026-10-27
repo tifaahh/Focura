@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>FOCURA — Reservation / Order</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#E4EFDE"/><path d="M20 31C20 23.5 22.4 17.8 28.5 13.5C28.8 21.6 26.2 27.6 20 31Z" fill="#4A7A5C"/><path d="M20 31C20 23.5 17.6 17.8 11.5 13.5C11.2 21.6 13.8 27.6 20 31Z" fill="#7FAE87"/></svg>
+      <span class="logo-text">FOCURA</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="products.html">Product & Service</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="order.html" class="btn btn-primary btn-sm">Order Now</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section section--cream">
+  <div class="container" style="max-width:680px;">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">Sistem Pemesanan</span>
+      <h2>Formulir Reservasi & Order</h2>
+      <p>Lengkapi data di bawah. Sistem akan membuatkan *Order ID* untuk bukti transaksi.</p>
+    </div>
+
+    <div class="card">
+      <!-- FORM -->
+      <form id="orderForm">
+        <div class="form-group">
+          <label>Nama Lengkap</label>
+          <input type="text" id="custName" class="form-control" required placeholder="Contoh: Ahmad Faiz">
+        </div>
+        <div class="form-group">
+          <label>Nomor WhatsApp Aktif</label>
+          <input type="tel" id="custWa" class="form-control" required placeholder="Contoh: 081234567890">
+        </div>
+        <div class="form-group">
+          <label>Pilih Produk / Layanan</label>
+          <select id="productSelect" class="form-control" required>
+            <option value="" disabled selected>-- Pilih Produk --</option>
+            <option value="ebook">E-Book: Digital Detox Guide (Rp 49.000)</option>
+            <option value="consult">Konsultasi 1-on-1 / 30 Menit (Rp 150.000)</option>
+            <option value="bundle">Bundle: E-Book + Konsultasi (Rp 179.000)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%; margin-top:10px;">
+          Buat Pesanan Sekarang
+        </button>
+      </form>
+
+      <!-- RECEIPT (Muncul setelah submit) -->
+      <div id="receiptBox" class="receipt-box">
+        <div style="text-align:center; margin-bottom:20px;">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="var(--green-600)" stroke-width="2" style="margin:0 auto 10px;"><path d="M20 6 9 17l-5-5"/></svg>
+          <h3>Pesanan Berhasil Dibuat!</h3>
+          <p style="font-size:14px; color:var(--muted);">Harap screenshot halaman ini sebagai bukti pemesanan (Order ID).</p>
+        </div>
+        
+        <div id="receiptContent">
+          <!-- Diisi oleh Javascript -->
+        </div>
+
+        <div style="margin-top:24px;">
+          <a id="waBtn" href="#" target="_blank" class="btn btn-whatsapp btn-lg" style="width:100%;">
+            Konfirmasi & Bayar via WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 FOCURA. UTS Simulasi Bisnis Digital.</span>
+      <span>Universitas Sugeng Hartono</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
