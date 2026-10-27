@@ -293,7 +293,32 @@ textarea.form-control{resize:vertical;min-height:120px}
 .star-rating span.active {
   color: #E5A13A;
 }
+/* ============================================================
+   TOMBOL GOOGLE DRIVE
+============================================================ */
+.btn-drive {
+  background: #ffffff;
+  color: #1A73E8; /* Warna khas Google Drive */
+  border: 2px solid #1A73E8;
+  box-shadow: 0 4px 10px rgba(26, 115, 232, 0.1);
+  margin-top: 12px;
+  display: flex;
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
 
+.btn-drive:hover {
+  background: #F1F8FE;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(26, 115, 232, 0.2);
+}
 /* ============================================================
    FOOTER
 ============================================================ */
