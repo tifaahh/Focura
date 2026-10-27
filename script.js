@@ -1,132 +1,67 @@
-/* ============================================================
-   FOCURA — Landing Page Scripts
-   - Sticky nav shadow
-   - Mobile menu toggle
-   - Smooth scroll with offset
-   - Active nav link highlight
-   - Scroll reveal animation
-   - Deep-link handling (URL hash)
-============================================================ */
-(function () {
-  'use strict';
-
-  /* ---------- Sticky nav shadow ---------- */
-  var nav = document.getElementById('nav');
-  var onScroll = function () {
-    if (window.scrollY > 12) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
-  /* ---------- Scroll offset (height of sticky nav + a bit) ---------- */
-  var NAV_OFFSET = 88;
-
-  /* ---------- Mobile menu ---------- */
-  var toggle = document.getElementById('navToggle');
-  var links  = document.getElementById('navLinks');
-
-  function closeMenu() {
-    links.classList.remove('open');
-    toggle.classList.remove('active');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Buka menu navigasi');
-  }
-
-  function openMenu() {
-    links.classList.add('open');
-    toggle.classList.add('active');
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.setAttribute('aria-label', 'Tutup menu navigasi');
-  }
-
-  if (toggle && links) {
-    toggle.addEventListener('click', function () {
-      if (links.classList.contains('open')) closeMenu();
-      else openMenu();
-    });
-  }
-
-  /* ---------- Smooth scroll for all internal anchors ---------- */
-  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      var targetId = a.getAttribute('href');
-      if (!targetId || targetId === '#' || targetId.length < 2) return;
-
-      var target = document.querySelector(targetId);
-      if (!target) return;
-
-      e.preventDefault();
-      closeMenu();
-
-      var top = target.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
-      window.scrollTo({ top: top, behavior: 'smooth' });
-
-      if (history.pushState) history.pushState(null, '', targetId);
-    });
-  });
-
-  /* ---------- Close menu when clicking outside ---------- */
-  document.addEventListener('click', function (e) {
-    if (!links || !links.classList.contains('open')) return;
-    if (links.contains(e.target) || toggle.contains(e.target)) return;
-    closeMenu();
-  });
-
-  /* ---------- Highlight active nav link on scroll ---------- */
-  var sections   = document.querySelectorAll('section[id]');
-  var navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
-
-  function setActive(id) {
-    navAnchors.forEach(function (a) {
-      var isActive = a.getAttribute('href') === '#' + id;
-      a.classList.toggle('is-active', isActive);
-    });
-  }
-
-  if ('IntersectionObserver' in window && sections.length) {
-    var sectionObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) setActive(entry.target.id);
-      });
-    }, {
-      rootMargin: '-' + (NAV_OFFSET + 20) + 'px 0px -55% 0px',
-      threshold: 0
-    });
-
-    sections.forEach(function (s) { sectionObserver.observe(s); });
-  }
-
-  /* ---------- Scroll reveal animation ---------- */
-  var revealEls = document.querySelectorAll('[data-reveal]');
-
-  if ('IntersectionObserver' in window) {
-    var revealObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
-    });
-
-    revealEls.forEach(function (el) { revealObserver.observe(el); });
-  } else {
-    // Fallback for very old browsers
-    revealEls.forEach(function (el) { el.classList.add('in'); });
-  }
-
-  /* ---------- Handle URL hash on page load ---------- */
-  if (window.location.hash) {
-    var target = document.querySelector(window.location.hash);
-    if (target) {
-      setTimeout(function () {
-        var top = target.getBoundingClientRect().top + window.pageYOffset - NAV_OFFSET;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      }, 120);
+document.addEventListener('DOMContentLoaded', function () {
+  // 1. Navbar Active State
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.nav-links a');
+  
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('is-active');
     }
+  });
+
+  // 2. Order Form Logic (Reservation/Order)
+  const orderForm = document.getElementById('orderForm');
+  const receiptBox = document.getElementById('receiptBox');
+  const receiptContent = document.getElementById('receiptContent');
+  const waBtn = document.getElementById('waBtn');
+
+  if (orderForm) {
+    // Set default product from URL params (e.g., order.html?product=ebook)
+    const urlParams = new URLSearchParams(window.location.search);
+    const prodParam = urlParams.get('product');
+    if (prodParam) {
+      document.getElementById('productSelect').value = prodParam;
+    }
+
+    orderForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('custName').value;
+      const wa = document.getElementById('custWa').value;
+      const product = document.getElementById('productSelect').value;
+      
+      let price = 0;
+      let productName = '';
+      
+      if (product === 'ebook') {
+        price = 49000;
+        productName = 'E-Book: Digital Detox Guide';
+      } else if (product === 'consult') {
+        price = 150000;
+        productName = 'Konsultasi 1-on-1 (30 Menit)';
+      } else if (product === 'bundle') {
+        price = 179000;
+        productName = 'Bundle: E-Book + Konsultasi';
+      }
+      
+      const orderId = 'ORD-' + Math.floor(1000 + Math.random() * 9000);
+      const priceFormatted = price.toLocaleString('id-ID');
+      
+      // Render Receipt
+      receiptContent.innerHTML = `
+        <div class="receipt-row"><span>Order ID</span><strong>${orderId}</strong></div>
+        <div class="receipt-row"><span>Nama Pemesan</span><strong>${name}</strong></div>
+        <div class="receipt-row"><span>WhatsApp</span><strong>${wa}</strong></div>
+        <div class="receipt-row"><span>Produk / Layanan</span><strong>${productName}</strong></div>
+        <div class="receipt-row"><span>Total Pembayaran</span><strong>Rp ${priceFormatted}</strong></div>
+      `;
+      
+      orderForm.style.display = 'none';
+      receiptBox.style.display = 'block';
+      
+      // Setup WhatsApp Link for Payment Confirmation
+      const waText = encodeURIComponent(`Halo Admin FOCURA, saya ingin mengonfirmasi pesanan saya.\n\n*Order ID:* ${orderId}\n*Nama:* ${name}\n*Produk:* ${productName}\n*Total:* Rp ${priceFormatted}\n\nMohon kirimkan instruksi pembayaran selanjutnya. Terima kasih.`);
+      waBtn.href = `https://wa.me/6289512707276?text=${waText}`;
+    });
   }
-})();
+});
