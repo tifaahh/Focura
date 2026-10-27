@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   
   // ============================================================
-  // 1. NAVBAR ACTIVE STATE
+  // 1. NAVBAR ACTIVE STATE (Highlight menu yang sedang dibuka)
   // ============================================================
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const navLinks = document.querySelectorAll('.nav-links a');
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ============================================================
-  // 2. ORDER FORM LOGIC (Halaman Order)
+  // 2. ORDER FORM LOGIC (Halaman order.html)
   // ============================================================
   const orderForm = document.getElementById('orderForm');
   const receiptBox = document.getElementById('receiptBox');
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const waBtn = document.getElementById('waBtn');
 
   if (orderForm) {
-    // Set default product from URL params (e.g., order.html?product=ebook)
+    // Set default produk dari URL (misal: order.html?product=ebook)
     const urlParams = new URLSearchParams(window.location.search);
     const prodParam = urlParams.get('product');
     if (prodParam) {
@@ -32,11 +32,13 @@ document.addEventListener('DOMContentLoaded', function () {
     orderForm.addEventListener('submit', function (e) {
       e.preventDefault();
       
+      // Ambil data dari form
       const name = document.getElementById('custName').value;
       const wa = document.getElementById('custWa').value;
       const product = document.getElementById('productSelect').value;
+      const payment = document.getElementById('paymentMethod').value;
       
-      // HARGA BARU (MURAH)
+      // Tentukan Harga & Nama Produk
       let price = 0;
       let productName = '';
       
@@ -51,29 +53,42 @@ document.addEventListener('DOMContentLoaded', function () {
         productName = 'Bundle: E-Book + Konsultasi';
       }
       
+      // Generate Order ID & Format Harga
       const orderId = 'ORD-' + Math.floor(1000 + Math.random() * 9000);
       const priceFormatted = price.toLocaleString('id-ID');
       
-      // Render Receipt (Struk)
+      // Render Tampilan Struk (Receipt)
       receiptContent.innerHTML = `
         <div class="receipt-row"><span>Order ID</span><strong>${orderId}</strong></div>
         <div class="receipt-row"><span>Nama Pemesan</span><strong>${name}</strong></div>
         <div class="receipt-row"><span>WhatsApp</span><strong>${wa}</strong></div>
-        <div class="receipt-row"><span>Produk / Layanan</span><strong>${productName}</strong></div>
+        <div class="receipt-row"><span>Produk</span><strong>${productName}</strong></div>
+        <div class="receipt-row"><span>Metode Bayar</span><strong>${payment}</strong></div>
         <div class="receipt-row"><span>Total Pembayaran</span><strong>Rp ${priceFormatted}</strong></div>
       `;
       
+      // Sembunyikan form, Tampilkan struk
       orderForm.style.display = 'none';
       receiptBox.style.display = 'block';
       
-      // Setup WhatsApp Link for Payment Confirmation
-      const waText = encodeURIComponent(`Halo Admin FOCURA, saya ingin mengonfirmasi pesanan saya.\n\n*Order ID:* ${orderId}\n*Nama:* ${name}\n*Produk:* ${productName}\n*Total:* Rp ${priceFormatted}\n\nMohon kirimkan instruksi pembayaran selanjutnya. Terima kasih.`);
+      // Buat Pesan Otomatis untuk WhatsApp Admin
+      const waText = encodeURIComponent(
+        `Halo Admin FOCURA, saya sudah membuat pesanan.\n\n` +
+        `*Order ID:* ${orderId}\n` +
+        `*Nama:* ${name}\n` +
+        `*Produk:* ${productName}\n` +
+        `*Total:* Rp ${priceFormatted}\n` +
+        `*Metode Bayar:* ${payment}\n\n` +
+        `Mohon kirimkan nomor ${payment} untuk pembayaran. Terima kasih.`
+      );
+      
+      // Arahkan tombol WhatsApp ke nomor Admin (089512707276)
       waBtn.href = `https://wa.me/6289512707276?text=${waText}`;
     });
   }
 
   // ============================================================
-  // 3. REVIEW FORM & LOCAL STORAGE LOGIC (Halaman Home/Index)
+  // 3. REVIEW FORM & LOCAL STORAGE LOGIC (Halaman index.html)
   // ============================================================
   const reviewForm = document.getElementById('reviewForm');
   const reviewList = document.getElementById('reviewList');
@@ -132,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function () {
         <p class="review-text">"${rev.text}"</p>
       `;
       
-      // Tambahkan ke paling atas
       reviewList.insertBefore(card, reviewList.firstChild);
     });
   }
