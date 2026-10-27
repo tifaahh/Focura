@@ -34,31 +34,43 @@
     </div>
 
     <div class="card">
-      <!-- FORM -->
+      <!-- FORM PEMESANAN -->
       <form id="orderForm">
         <div class="form-group">
           <label>Nama Lengkap</label>
           <input type="text" id="custName" class="form-control" required placeholder="Contoh: Ahmad Faiz">
         </div>
+        
         <div class="form-group">
           <label>Nomor WhatsApp Aktif</label>
           <input type="tel" id="custWa" class="form-control" required placeholder="Contoh: 081234567890">
         </div>
+        
         <div class="form-group">
           <label>Pilih Produk / Layanan</label>
-                  <select id="productSelect" class="form-control" required>
+          <select id="productSelect" class="form-control" required>
             <option value="" disabled selected>-- Pilih Produk --</option>
             <option value="ebook">E-Book: Digital Detox Guide (Rp 5.000)</option>
             <option value="consult">Konsultasi 1-on-1 / 30 Menit (Rp 10.000)</option>
             <option value="bundle">Bundle: E-Book + Konsultasi (Rp 10.000)</option>
           </select>
         </div>
+
+        <div class="form-group">
+          <label>Pilih Metode Pembayaran (E-Wallet)</label>
+          <select id="paymentMethod" class="form-control" required>
+            <option value="" disabled selected>-- Pilih E-Wallet --</option>
+            <option value="GoPay">GoPay</option>
+            <option value="DANA">DANA</option>
+          </select>
+        </div>
+
         <button type="submit" class="btn btn-primary btn-lg" style="width:100%; margin-top:10px;">
           Buat Pesanan Sekarang
         </button>
       </form>
 
-      <!-- RECEIPT (Muncul setelah submit) -->
+      <!-- STRUK / RECEIPT (Muncul setelah submit) -->
       <div id="receiptBox" class="receipt-box">
         <div style="text-align:center; margin-bottom:20px;">
           <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="var(--green-600)" stroke-width="2" style="margin:0 auto 10px;"><path d="M20 6 9 17l-5-5"/></svg>
@@ -67,7 +79,7 @@
         </div>
         
         <div id="receiptContent">
-          <!-- Diisi oleh Javascript -->
+          <!-- Diisi otomatis oleh JavaScript -->
         </div>
 
         <div style="margin-top:24px;">
