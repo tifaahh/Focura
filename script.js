@@ -15,18 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const receiptBox = document.getElementById('receiptBox');
   const receiptContent = document.getElementById('receiptContent');
   const waBtn = document.getElementById('waBtn');
-  
-  // Elemen Verifikasi & Akses
-  const verifyBtn = document.getElementById('verifyBtn');
-  const proofUpload = document.getElementById('proofUpload');
-  const accessBox = document.getElementById('accessBox');
-  const driveBtn = document.getElementById('driveBtn');
-
-  // GANTI LINK GOOGLE DRIVE E-BOOK KAMU DI SINI
-  const gdriveLink = "https://drive.google.com/file/d/1XXXXX_LINK_FILE_KAMU_XXXXX/view?usp=sharing"; 
 
   if (orderForm) {
-    // A. Saat Form Disubmit (Buat Pesanan)
     orderForm.addEventListener('submit', function (e) {
       e.preventDefault();
       
@@ -34,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const wa = document.getElementById('custWa').value;
       const payment = document.getElementById('paymentMethod').value;
       
+      // Harga & Produk
       let price = 5000;
       let productName = 'E-Book: Digital Wellbeing Guide';
       
@@ -53,46 +44,18 @@ document.addEventListener('DOMContentLoaded', function () {
       orderForm.style.display = 'none';
       receiptBox.style.display = 'block';
       
-      // Link WhatsApp
+      // Setup Pesan Otomatis WhatsApp
       const waText = encodeURIComponent(
-        `Halo Admin FOCURA, saya sudah membuat pesanan.\n\n` +
+        `Halo Admin FOCURA, saya sudah membuat pesanan dan melakukan transfer.\n\n` +
         `*Order ID:* ${orderId}\n` +
         `*Nama:* ${name}\n` +
         `*Produk:* ${productName}\n` +
         `*Total:* Rp ${priceFormatted}\n` +
         `*Metode Bayar:* ${payment}\n\n` +
-        `Saya sudah transfer, mohon dicek ya. Terima kasih.`
+        `Berikut saya lampirkan bukti transfernya. Mohon kirimkan link E-Book-nya ya. Terima kasih!`
       );
       waBtn.href = `https://wa.me/6289512707276?text=${waText}`;
     });
-
-    // B. Saat Tombol Verifikasi Diklik
-    if (verifyBtn) {
-      verifyBtn.addEventListener('click', function() {
-        // Cek apakah file sudah diupload
-        if (!proofUpload.files || proofUpload.files.length === 0) {
-          alert('Silakan upload bukti transfer (screenshot) terlebih dahulu sebelum melanjutkan!');
-          return;
-        }
-
-        // Simulasi loading (opsional, agar terasa seperti memproses)
-        verifyBtn.textContent = 'Memverifikasi...';
-        verifyBtn.style.opacity = '0.7';
-        verifyBtn.disabled = true;
-
-        // Setelah 1 detik, tampilkan akses
-        setTimeout(function() {
-          // Sembunyikan tombol verify & area upload
-          verifyBtn.style.display = 'none';
-          document.querySelector('.upload-area').style.display = 'none';
-          
-          // Isi link drive dan tampilkan kotaknya
-          if (driveBtn) driveBtn.href = gdriveLink;
-          if (accessBox) accessBox.style.display = 'block';
-          
-        }, 1000); // Simulasi loading 1 detik
-      });
-    }
   }
 
   // 3. REVIEW FORM LOGIC (Sama seperti sebelumnya)
