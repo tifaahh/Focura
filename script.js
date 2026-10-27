@@ -1,84 +1,112 @@
-/* ============================================================
-   REVIEW & TESTIMONIALS
-============================================================ */
-.review-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-bottom: 48px;
-}
+  // 3. Review Form & Local Storage Logic
+  const reviewForm = document.getElementById('reviewForm');
+  const reviewList = document.getElementById('reviewList');
+  const starContainer = document.getElementById('starContainer');
+  const revRatingInput = document.getElementById('revRating');
 
-.review-card {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  padding: 24px;
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  flex-direction: column;
-}
+  // Bintang interaktif
+  if (starContainer) {
+    const stars = starContainer.querySelectorAll('span');
+    stars.forEach(star => {
+      star.addEventListener('click', function() {
+        const val = this.getAttribute('data-value');
+        revRatingInput.value = val;
+        
+        // Reset all
+        stars.forEach(s => s.classList.remove('active'));
+        
+        // Fill selected
+        for (let i = 0; i < val; i++) {
+          stars[i].classList.add('active');
+        }
+      });
+      
+      // Default 5 stars on load
+      if (star.getAttribute('data-value') <= 5) {
+        star.classList.add('active');
+      }
+    });
+  }
 
-.review-header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 16px;
-}
+  // Render Review dari LocalStorage
+  function loadReviews() {
+    if (!reviewList) return;
+    
+    // Ambil data dari localStorage
+    let savedReviews = JSON.parse(localStorage.getItem('focuraReviews')) || [];
+    
+    // Hapus review default jika ada data di localStorage (opsional, biar dinamis)
+    // Tapi kita biarkan default tetap ada dengan tidak menghapus innerHTML.
 
-.review-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--green-100);
-  color: var(--green-700);
-  display: grid;
-  place-items: center;
-  font-weight: 800;
-  font-size: 18px;
-}
+    savedReviews.forEach(rev => {
+      const card = document.createElement('div');
+      card.className = 'review-card';
+      
+      const stars = '★'.repeat(rev.rating) + '☆'.repeat(5 - rev.rating);
+      const initial = rev.name.charAt(0).toUpperCase();
 
-.review-meta h4 {
-  font-size: 16px;
-  color: var(--green-900);
-  margin-bottom: 4px;
-}
+      card.innerHTML = `
+        <div class="review-header">
+          <div class="review-avatar">${initial}</div>
+          <div class="review-meta">
+            <h4>${rev.name}</h4>
+            <div class="review-stars">${stars}</div>
+          </div>
+        </div>
+        <p class="review-text">"${rev.text}"</p>
+      `;
+      
+      // Tambahkan ke paling atas
+      reviewList.insertBefore(card, reviewList.firstChild);
+    });
+  }
 
-.review-stars {
-  color: #F5B041;
-  font-size: 14px;
-  letter-spacing: 2px;
-}
+  // Handle Submit Review
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('revName').value;
+      const rating = parseInt(revRatingInput.value);
+      const text = document.getElementById('revText').value;
 
-.review-text {
-  font-size: 15px;
-  color: var(--muted);
-  font-style: italic;
-  line-height: 1.6;
-}
+      const newReview = { name, rating, text };
+      
+      // Simpan ke localStorage
+      let savedReviews = JSON.parse(localStorage.getItem('focuraReviews')) || [];
+      savedReviews.push(newReview);
+      localStorage.setItem('focuraReviews', JSON.stringify(savedReviews));
 
-/* Form Review */
-.form-review-wrapper {
-  background: var(--green-50);
-  border: 1px dashed var(--green-300);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  max-width: 680px;
-  margin: 0 auto;
-}
+      // Render langsung ke layar (tanpa reload)
+      const card = document.createElement('div');
+      card.className = 'review-card';
+      const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+      const initial = name.charAt(0).toUpperCase();
 
-.star-rating {
-  display: flex;
-  gap: 8px;
-  font-size: 28px;
-  color: var(--green-200);
-  cursor: pointer;
-  margin-bottom: 16px;
-}
+      card.innerHTML = `
+        <div class="review-header">
+          <div class="review-avatar">${initial}</div>
+          <div class="review-meta">
+            <h4>${name}</h4>
+            <div class="review-stars">${stars}</div>
+          </div>
+        </div>
+        <p class="review-text">"${text}"</p>
+      `;
+      
+      reviewList.insertBefore(card, reviewList.firstChild);
 
-.star-rating span.active {
-  color: #F5B041;
-}
+      // Reset form
+      reviewForm.reset();
+      revRatingInput.value = 5;
+      if (starContainer) {
+        const stars = starContainer.querySelectorAll('span');
+        stars.forEach(s => s.classList.add('active'));
+      }
 
-.star-rating span:hover {
-  color: #F5B041;
-}
+      alert('Terima kasih! Review kamu berhasil ditambahkan sebagai bukti testimoni.');
+    });
+  }
+
+  // Panggil fungsi load saat halaman dibuka
+  loadReviews();
