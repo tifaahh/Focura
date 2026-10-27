@@ -68,7 +68,7 @@
         </button>
       </form>
 
-      <!-- STRUK / RECEIPT -->
+      <!-- STRUK / RECEIPT (Muncul setelah submit) -->
       <div id="receiptBox" class="receipt-box" style="display: none;">
         <div style="text-align:center; margin-bottom:20px;">
           <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="var(--green-600)" stroke-width="2" style="margin:0 auto 10px;"><path d="M20 6 9 17l-5-5"/></svg>
@@ -80,10 +80,32 @@
           <!-- Diisi otomatis oleh JavaScript -->
         </div>
 
-        <div style="margin-top:24px;">
+        <!-- AREA TOMBOL AKSI -->
+        <div style="margin-top:28px; padding-top:24px; border-top:2px dashed var(--green-300);">
+          
+          <!-- LANGKAH 1: KONFIRMASI WA -->
+          <p style="font-size:14px; text-align:center; margin-bottom:12px; font-weight:600; color:var(--green-900);">
+            Langkah 1: Konfirmasi & Bayar
+          </p>
           <a id="waBtn" href="#" target="_blank" class="btn btn-whatsapp btn-lg" style="width:100%;">
-            Konfirmasi & Bayar via WhatsApp
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:8px;"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.94 7.94 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58Z"/></svg>
+            Konfirmasi via WhatsApp
           </a>
+          
+          <div style="text-align:center; margin:20px 0; color:var(--muted); font-size:12px; font-weight:700;">ATAU</div>
+
+          <!-- LANGKAH 2: AKSES GDRIVE -->
+          <p style="font-size:14px; text-align:center; margin-bottom:12px; font-weight:600; color:var(--green-900);">
+            Langkah 2: Akses E-Book
+          </p>
+          <p style="font-size:12px; text-align:center; margin-bottom:12px; color:var(--muted);">
+            (Pastikan Anda sudah melakukan pembayaran sebelum mengakses)
+          </p>
+          <a id="driveBtn" href="#" target="_blank" class="btn btn-drive">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:8px;"><path d="M14.4 6L10.5 12H16L19.5 6H14.4ZM8.8 6L4 14.2L6.8 19L11.6 10.8L8.8 6ZM14.5 18L10.4 11H4.5L8.5 18H14.5ZM15.4 18L20 10.2L17.2 5.5L12.6 13.3L15.4 18Z"/></svg>
+            Buka E-Book (Google Drive)
+          </a>
+
         </div>
       </div>
     </div>
