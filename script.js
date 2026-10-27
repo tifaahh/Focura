@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   
-  // ============================================================
   // 1. NAVBAR ACTIVE STATE
-  // ============================================================
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const navLinks = document.querySelectorAll('.nav-links a');
   
@@ -12,9 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // ============================================================
-  // 2. ORDER FORM LOGIC
-  // ============================================================
+  // 2. ORDER FORM LOGIC (Hanya E-Book)
   const orderForm = document.getElementById('orderForm');
   const receiptBox = document.getElementById('receiptBox');
   const receiptContent = document.getElementById('receiptContent');
@@ -22,52 +18,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (orderForm) {
     orderForm.addEventListener('submit', function (e) {
-      e.preventDefault(); // Mencegah halaman refresh
+      e.preventDefault();
       
-      // Ambil data dengan pengaman (jika elemen tidak ada, tidak akan error)
-      const nameEl = document.getElementById('custName');
-      const waEl = document.getElementById('custWa');
-      const productEl = document.getElementById('productSelect');
-      const paymentEl = document.getElementById('paymentMethod');
+      const name = document.getElementById('custName').value;
+      const wa = document.getElementById('custWa').value;
+      const payment = document.getElementById('paymentMethod').value;
       
-      const name = nameEl ? nameEl.value : 'Tanpa Nama';
-      const wa = waEl ? waEl.value : '-';
-      const product = productEl ? productEl.value : 'ebook';
-      const payment = paymentEl ? paymentEl.value : 'GoPay';
-      
-      // Tentukan Harga
-      let price = 0;
-      let productName = '';
-      
-      if (product === 'ebook') {
-        price = 5000;
-        productName = 'E-Book: Digital Detox Guide';
-      } else if (product === 'consult') {
-        price = 10000;
-        productName = 'Konsultasi 1-on-1 (30 Menit)';
-      } else if (product === 'bundle') {
-        price = 10000;
-        productName = 'Bundle: E-Book + Konsultasi';
-      }
+      // Harga Terkunci untuk E-Book
+      let price = 5000;
+      let productName = 'E-Book: Digital Wellbeing Guide';
       
       const orderId = 'ORD-' + Math.floor(1000 + Math.random() * 9000);
       const priceFormatted = price.toLocaleString('id-ID');
       
       // Render Struk
-      if(receiptContent) {
-        receiptContent.innerHTML = `
-          <div class="receipt-row"><span>Order ID</span><strong>${orderId}</strong></div>
-          <div class="receipt-row"><span>Nama Pemesan</span><strong>${name}</strong></div>
-          <div class="receipt-row"><span>WhatsApp</span><strong>${wa}</strong></div>
-          <div class="receipt-row"><span>Produk</span><strong>${productName}</strong></div>
-          <div class="receipt-row"><span>Metode Bayar</span><strong>${payment}</strong></div>
-          <div class="receipt-row"><span>Total</span><strong>Rp ${priceFormatted}</strong></div>
-        `;
-      }
+      receiptContent.innerHTML = `
+        <div class="receipt-row"><span>Order ID</span><strong>${orderId}</strong></div>
+        <div class="receipt-row"><span>Nama Pemesan</span><strong>${name}</strong></div>
+        <div class="receipt-row"><span>WhatsApp</span><strong>${wa}</strong></div>
+        <div class="receipt-row"><span>Produk</span><strong>${productName}</strong></div>
+        <div class="receipt-row"><span>Metode Bayar</span><strong>${payment}</strong></div>
+        <div class="receipt-row"><span>Total</span><strong>Rp ${priceFormatted}</strong></div>
+      `;
       
-      // Tampilkan Struk, Sembunyikan Form
       orderForm.style.display = 'none';
-      if(receiptBox) receiptBox.style.display = 'block';
+      receiptBox.style.display = 'block';
       
       // Link WhatsApp Otomatis
       const waText = encodeURIComponent(
@@ -79,14 +54,11 @@ document.addEventListener('DOMContentLoaded', function () {
         `*Metode Bayar:* ${payment}\n\n` +
         `Mohon kirimkan nomor ${payment} untuk pembayaran. Terima kasih.`
       );
-      
-      if(waBtn) waBtn.href = `https://wa.me/6289512707276?text=${waText}`;
+      waBtn.href = `https://wa.me/6289512707276?text=${waText}`;
     });
   }
 
-  // ============================================================
-  // 3. REVIEW FORM LOGIC
-  // ============================================================
+  // 3. REVIEW FORM LOGIC (Sama seperti sebelumnya)
   const reviewForm = document.getElementById('reviewForm');
   const reviewList = document.getElementById('reviewList');
   const starContainer = document.getElementById('starContainer');
