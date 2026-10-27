@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // 1. Navbar Active State
+  
+  // ============================================================
+  // 1. NAVBAR ACTIVE STATE
+  // ============================================================
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const navLinks = document.querySelectorAll('.nav-links a');
   
@@ -9,7 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // 2. Order Form Logic (Reservation/Order)
+  // ============================================================
+  // 2. ORDER FORM LOGIC (Halaman Order)
+  // ============================================================
   const orderForm = document.getElementById('orderForm');
   const receiptBox = document.getElementById('receiptBox');
   const receiptContent = document.getElementById('receiptContent');
@@ -20,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const prodParam = urlParams.get('product');
     if (prodParam) {
-      document.getElementById('productSelect').value = prodParam;
+      const selectElement = document.getElementById('productSelect');
+      if(selectElement) selectElement.value = prodParam;
     }
 
     orderForm.addEventListener('submit', function (e) {
@@ -30,7 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const wa = document.getElementById('custWa').value;
       const product = document.getElementById('productSelect').value;
       
-           let price = 0;
+      // HARGA BARU (MURAH)
+      let price = 0;
       let productName = '';
       
       if (product === 'ebook') {
@@ -46,45 +53,66 @@ document.addEventListener('DOMContentLoaded', function () {
       
       const orderId = 'ORD-' + Math.floor(1000 + Math.random() * 9000);
       const priceFormatted = price.toLocaleString('id-ID');
-      // 3. Review Form & Local Storage Logic
+      
+      // Render Receipt (Struk)
+      receiptContent.innerHTML = `
+        <div class="receipt-row"><span>Order ID</span><strong>${orderId}</strong></div>
+        <div class="receipt-row"><span>Nama Pemesan</span><strong>${name}</strong></div>
+        <div class="receipt-row"><span>WhatsApp</span><strong>${wa}</strong></div>
+        <div class="receipt-row"><span>Produk / Layanan</span><strong>${productName}</strong></div>
+        <div class="receipt-row"><span>Total Pembayaran</span><strong>Rp ${priceFormatted}</strong></div>
+      `;
+      
+      orderForm.style.display = 'none';
+      receiptBox.style.display = 'block';
+      
+      // Setup WhatsApp Link for Payment Confirmation
+      const waText = encodeURIComponent(`Halo Admin FOCURA, saya ingin mengonfirmasi pesanan saya.\n\n*Order ID:* ${orderId}\n*Nama:* ${name}\n*Produk:* ${productName}\n*Total:* Rp ${priceFormatted}\n\nMohon kirimkan instruksi pembayaran selanjutnya. Terima kasih.`);
+      waBtn.href = `https://wa.me/6289512707276?text=${waText}`;
+    });
+  }
+
+  // ============================================================
+  // 3. REVIEW FORM & LOCAL STORAGE LOGIC (Halaman Home/Index)
+  // ============================================================
   const reviewForm = document.getElementById('reviewForm');
   const reviewList = document.getElementById('reviewList');
   const starContainer = document.getElementById('starContainer');
   const revRatingInput = document.getElementById('revRating');
 
-  // Bintang interaktif
+  // Logika Bintang Interaktif
   if (starContainer) {
     const stars = starContainer.querySelectorAll('span');
+    
+    // Set default 5 bintang menyala saat halaman dimuat
+    stars.forEach(star => {
+      if (parseInt(star.getAttribute('data-value')) <= 5) {
+        star.classList.add('active');
+      }
+    });
+
+    // Logika saat bintang diklik
     stars.forEach(star => {
       star.addEventListener('click', function() {
-        const val = this.getAttribute('data-value');
+        const val = parseInt(this.getAttribute('data-value'));
         revRatingInput.value = val;
         
-        // Reset all
+        // Matikan semua bintang
         stars.forEach(s => s.classList.remove('active'));
         
-        // Fill selected
+        // Nyalakan bintang sesuai yang diklik
         for (let i = 0; i < val; i++) {
           stars[i].classList.add('active');
         }
       });
-      
-      // Default 5 stars on load
-      if (star.getAttribute('data-value') <= 5) {
-        star.classList.add('active');
-      }
     });
   }
 
-  // Render Review dari LocalStorage
+  // Fungsi untuk memuat review dari localStorage
   function loadReviews() {
     if (!reviewList) return;
     
-    // Ambil data dari localStorage
     let savedReviews = JSON.parse(localStorage.getItem('focuraReviews')) || [];
-    
-    // Hapus review default jika ada data di localStorage (opsional, biar dinamis)
-    // Tapi kita biarkan default tetap ada dengan tidak menghapus innerHTML.
 
     savedReviews.forEach(rev => {
       const card = document.createElement('div');
@@ -125,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
       savedReviews.push(newReview);
       localStorage.setItem('focuraReviews', JSON.stringify(savedReviews));
 
-      // Render langsung ke layar (tanpa reload)
+      // Render langsung ke layar tanpa reload
       const card = document.createElement('div');
       card.className = 'review-card';
       const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
@@ -144,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
       
       reviewList.insertBefore(card, reviewList.firstChild);
 
-      // Reset form
+      // Reset form dan kembalikan bintang ke 5
       reviewForm.reset();
       revRatingInput.value = 5;
       if (starContainer) {
@@ -158,22 +186,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Panggil fungsi load saat halaman dibuka
   loadReviews();
-    
-      // Render Receipt
-      receiptContent.innerHTML = `
-        <div class="receipt-row"><span>Order ID</span><strong>${orderId}</strong></div>
-        <div class="receipt-row"><span>Nama Pemesan</span><strong>${name}</strong></div>
-        <div class="receipt-row"><span>WhatsApp</span><strong>${wa}</strong></div>
-        <div class="receipt-row"><span>Produk / Layanan</span><strong>${productName}</strong></div>
-        <div class="receipt-row"><span>Total Pembayaran</span><strong>Rp ${priceFormatted}</strong></div>
-      `;
-      
-      orderForm.style.display = 'none';
-      receiptBox.style.display = 'block';
-      
-      // Setup WhatsApp Link for Payment Confirmation
-      const waText = encodeURIComponent(`Halo Admin FOCURA, saya ingin mengonfirmasi pesanan saya.\n\n*Order ID:* ${orderId}\n*Nama:* ${name}\n*Produk:* ${productName}\n*Total:* Rp ${priceFormatted}\n\nMohon kirimkan instruksi pembayaran selanjutnya. Terima kasih.`);
-      waBtn.href = `https://wa.me/6289512707276?text=${waText}`;
-    });
-  }
+
 });
