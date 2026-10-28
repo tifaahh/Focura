@@ -1,16 +1,26 @@
 document.addEventListener('DOMContentLoaded', function () {
   
-  // 1. NAVBAR ACTIVE STATE
+  // 1. MOBILE MENU TOGGLE
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+    });
+  }
+
+  // 2. NAVBAR ACTIVE STATE
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  const navLinks = document.querySelectorAll('.nav-links a');
+  const navAnchors = document.querySelectorAll('.nav-links a');
   
-  navLinks.forEach(link => {
+  navAnchors.forEach(link => {
     if (link.getAttribute('href') === currentPath) {
       link.classList.add('is-active');
     }
   });
 
-  // 2. ORDER FORM LOGIC
+  // 3. ORDER FORM LOGIC
   const orderForm = document.getElementById('orderForm');
   const receiptBox = document.getElementById('receiptBox');
   const receiptContent = document.getElementById('receiptContent');
@@ -20,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
     orderForm.addEventListener('submit', function (e) {
       e.preventDefault();
       
-      // Mengambil data dari form termasuk Email
       const name = document.getElementById('custName').value;
       const wa = document.getElementById('custWa').value;
       const email = document.getElementById('custEmail').value;
@@ -32,27 +41,22 @@ document.addEventListener('DOMContentLoaded', function () {
       const orderId = 'ORD-' + Math.floor(1000 + Math.random() * 9000);
       const priceFormatted = price.toLocaleString('id-ID');
       
-      // Render Struk (Menambahkan baris Email)
       receiptContent.innerHTML = `
         <div class="receipt-row"><span>Order ID</span><strong>${orderId}</strong></div>
-        <div class="receipt-row"><span>Nama Pemesan</span><strong>${name}</strong></div>
-        <div class="receipt-row"><span>WhatsApp</span><strong>${wa}</strong></div>
+        <div class="receipt-row"><span>Nama</span><strong>${name}</strong></div>
         <div class="receipt-row"><span>Email</span><strong>${email}</strong></div>
-        <div class="receipt-row"><span>Produk</span><strong>${productName}</strong></div>
-        <div class="receipt-row"><span>Metode Bayar</span><strong>${payment}</strong></div>
+        <div class="receipt-row"><span>Produk</span><strong>E-Book</strong></div>
         <div class="receipt-row"><span>Total</span><strong>Rp ${priceFormatted}</strong></div>
       `;
       
       orderForm.style.display = 'none';
       receiptBox.style.display = 'block';
       
-      // Setup Pesan Otomatis WhatsApp (Menyertakan Email)
       const waText = encodeURIComponent(
-        `Halo Admin FOCURA, saya sudah membuat pesanan dan melakukan transfer.\n\n` +
+        `Halo Admin FOCURA, saya sudah membuat pesanan.\n\n` +
         `*Order ID:* ${orderId}\n` +
         `*Nama:* ${name}\n` +
         `*Email:* ${email}\n` +
-        `*Produk:* ${productName}\n` +
         `*Total:* Rp ${priceFormatted}\n` +
         `*Metode Bayar:* ${payment}\n\n` +
         `Berikut saya lampirkan bukti transfernya. Mohon kirimkan E-Book-nya ke email saya ya. Terima kasih!`
@@ -61,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 3. REVIEW FORM LOGIC
+  // 4. REVIEW FORM LOGIC
   const reviewForm = document.getElementById('reviewForm');
   const reviewList = document.getElementById('reviewList');
   const starContainer = document.getElementById('starContainer');
