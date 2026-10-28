@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   
+  // ============================================================
   // 1. MOBILE MENU TOGGLE
+  // ============================================================
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.querySelector('.nav-links');
 
@@ -10,7 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ============================================================
   // 2. NAVBAR ACTIVE STATE
+  // ============================================================
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   const navAnchors = document.querySelectorAll('.nav-links a');
   
@@ -20,7 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // 3. ORDER FORM LOGIC
+  // ============================================================
+  // 3. ORDER FORM LOGIC (Pesan E-Book)
+  // ============================================================
   const orderForm = document.getElementById('orderForm');
   const receiptBox = document.getElementById('receiptBox');
   const receiptContent = document.getElementById('receiptContent');
@@ -36,22 +42,23 @@ document.addEventListener('DOMContentLoaded', function () {
       const payment = document.getElementById('paymentMethod').value;
       
       let price = 5000;
-      let productName = 'E-Book: Digital Wellbeing Guide';
-      
       const orderId = 'ORD-' + Math.floor(1000 + Math.random() * 9000);
       const priceFormatted = price.toLocaleString('id-ID');
       
+      // Render Struk
       receiptContent.innerHTML = `
         <div class="receipt-row"><span>Order ID</span><strong>${orderId}</strong></div>
-        <div class="receipt-row"><span>Nama</span><strong>${name}</strong></div>
+        <div class="receipt-row"><span>Nama Pemesan</span><strong>${name}</strong></div>
         <div class="receipt-row"><span>Email</span><strong>${email}</strong></div>
-        <div class="receipt-row"><span>Produk</span><strong>E-Book</strong></div>
+        <div class="receipt-row"><span>Produk</span><strong>E-Book: Digital Wellbeing Guide</strong></div>
+        <div class="receipt-row"><span>Metode Bayar</span><strong>${payment}</strong></div>
         <div class="receipt-row"><span>Total</span><strong>Rp ${priceFormatted}</strong></div>
       `;
       
       orderForm.style.display = 'none';
       receiptBox.style.display = 'block';
       
+      // Setup Link WhatsApp Order
       const waText = encodeURIComponent(
         `Halo Admin FOCURA, saya sudah membuat pesanan.\n\n` +
         `*Order ID:* ${orderId}\n` +
@@ -65,24 +72,30 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 4. REVIEW FORM LOGIC
+  // ============================================================
+  // 4. REVIEW FORM LOGIC (Kirim Langsung ke WA)
+  // ============================================================
   const reviewForm = document.getElementById('reviewForm');
-  const reviewList = document.getElementById('reviewList');
   const starContainer = document.getElementById('starContainer');
   const revRatingInput = document.getElementById('revRating');
 
+  // Logika Bintang Interaktif
   if (starContainer) {
     const stars = starContainer.querySelectorAll('span');
+    
+    // Set default 5 bintang menyala
     stars.forEach(star => {
       if (parseInt(star.getAttribute('data-value')) <= 5) {
         star.classList.add('active');
       }
     });
 
+    // Klik bintang
     stars.forEach(star => {
       star.addEventListener('click', function() {
         const val = parseInt(this.getAttribute('data-value'));
         if(revRatingInput) revRatingInput.value = val;
+        
         stars.forEach(s => s.classList.remove('active'));
         for (let i = 0; i < val; i++) {
           stars[i].classList.add('active');
@@ -91,65 +104,40 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  function loadReviews() {
-    if (!reviewList) return;
-    let savedReviews = JSON.parse(localStorage.getItem('focuraReviews')) || [];
-    savedReviews.forEach(rev => {
-      const card = document.createElement('div');
-      card.className = 'review-card';
-      const stars = '★'.repeat(rev.rating) + '☆'.repeat(5 - rev.rating);
-      const initial = rev.name.charAt(0).toUpperCase();
-      card.innerHTML = `
-        <div class="review-header">
-          <div class="review-avatar">${initial}</div>
-          <div class="review-meta">
-            <h4>${rev.name}</h4>
-            <div class="review-stars">${stars}</div>
-          </div>
-        </div>
-        <p class="review-text">"${rev.text}"</p>
-      `;
-      reviewList.insertBefore(card, reviewList.firstChild);
-    });
-  }
-
+  // Logika Submit Review ke WA
   if (reviewForm) {
     reviewForm.addEventListener('submit', function(e) {
       e.preventDefault();
+      
       const name = document.getElementById('revName').value;
       const rating = revRatingInput ? parseInt(revRatingInput.value) : 5;
       const text = document.getElementById('revText').value;
-      const newReview = { name, rating, text };
       
-      let savedReviews = JSON.parse(localStorage.getItem('focuraReviews')) || [];
-      savedReviews.push(newReview);
-      localStorage.setItem('focuraReviews', JSON.stringify(savedReviews));
-
-      const card = document.createElement('div');
-      card.className = 'review-card';
-      const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
-      const initial = name.charAt(0).toUpperCase();
-      card.innerHTML = `
-        <div class="review-header">
-          <div class="review-avatar">${initial}</div>
-          <div class="review-meta">
-            <h4>${name}</h4>
-            <div class="review-stars">${stars}</div>
-          </div>
-        </div>
-        <p class="review-text">"${text}"</p>
-      `;
-      if(reviewList) reviewList.insertBefore(card, reviewList.firstChild);
-
+      // Membuat visual bintang untuk pesan WA
+      const stars = '⭐'.repeat(rating);
+      
+      // Format pesan untuk WhatsApp
+      const waText = encodeURIComponent(
+        `Halo Admin FOCURA, saya ingin memberikan review.\n\n` +
+        `*Nama:* ${name}\n` +
+        `*Rating:* ${stars} (${rating}/5)\n` +
+        `*Ulasan:* "${text}"\n\n` +
+        `Mohon review ini ditampilkan di website. Terima kasih!`
+      );
+      
+      // Buka WhatsApp di tab baru
+      window.open(`https://wa.me/6289512707276?text=${waText}`, '_blank');
+      
+      // Reset form
       reviewForm.reset();
       if (revRatingInput) revRatingInput.value = 5;
       if (starContainer) {
-        const stars = starContainer.querySelectorAll('span');
-        stars.forEach(s => s.classList.add('active'));
+        const starElements = starContainer.querySelectorAll('span');
+        starElements.forEach(s => s.classList.add('active'));
       }
-      alert('Terima kasih! Review kamu berhasil ditambahkan.');
+      
+      alert('Terima kasih! Anda akan diarahkan ke WhatsApp untuk mengirim review.');
     });
   }
 
-  loadReviews();
 });
