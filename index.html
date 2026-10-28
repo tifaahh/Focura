@@ -20,6 +20,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="products.html">Product & Service</a>
+      <a href="review.html">Review</a>
       <a href="contact.html">Contact Us</a>
       <a href="order.html" class="btn btn-primary btn-sm">Order Now</a>
     </nav>
@@ -39,7 +40,6 @@
       </div>
     </div>
     <div class="hero-art">
-      <!-- Ilustrasi SVG -->
       <svg viewBox="0 0 460 460">
         <circle cx="230" cy="230" r="196" fill="#EDF4E8"/>
         <ellipse cx="230" cy="374" rx="128" ry="20" fill="#DFEBD6"/>
@@ -84,7 +84,7 @@
   </div>
 </section>
 
-<!-- E-BOOK HIGHLIGHT SECTION (BARU) -->
+<!-- E-BOOK HIGHLIGHT SECTION -->
 <section class="section section--cream">
   <div class="container">
     <div class="section-head section-head--center">
@@ -122,7 +122,6 @@
         <a href="products.html" class="btn btn-primary" style="margin-top: 24px;">Lihat Detail E-Book</a>
       </div>
       <div style="text-align: center;">
-        <!-- Mockup Cover E-Book sederhana -->
         <div style="width: 220px; height: 300px; background: linear-gradient(150deg, #2F4A3A, #1A2E22); border-radius: 12px; margin: 0 auto; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3); display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; padding: 20px; transform: rotate(3deg); transition: transform 0.3s;">
           <span style="font-size: 10px; letter-spacing: 2px; opacity: 0.8; margin-bottom: 20px;">FOCURA SERIES</span>
           <h4 style="font-size: 28px; margin: 0; line-height: 1.1;">Digital<br>Wellbeing<br>Guide</h4>
@@ -130,76 +129,6 @@
           <p style="font-size: 12px; opacity: 0.7;">Edisi 2026</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION REVIEW & TESTIMONI -->
-<section class="section section--white" id="reviews">
-  <div class="container">
-    <div class="section-head section-head--center">
-      <span class="eyebrow">Apa Kata Mereka?</span>
-      <h2>Testimoni Pelanggan FOCURA</h2>
-      <p>Bukti nyata dari mereka yang sudah memulai perjalanan digital well-being.</p>
-    </div>
-
-    <!-- Tempat Review akan ditampilkan oleh JavaScript -->
-    <div class="review-grid" id="reviewList">
-      <!-- Review Default 1 -->
-      <div class="review-card">
-        <div class="review-header">
-          <div class="review-avatar">B</div>
-          <div class="review-meta">
-            <h4>Budi Santoso</h4>
-            <div class="review-stars">★★★★★</div>
-          </div>
-        </div>
-        <p class="review-text">"E-booknya sangat relate sama kehidupan mahasiswa. Bahasanya nggak bikin stres, dan tips manajemen notifikasinya beneran ngebantu aku ngerjain skripsi dengan fokus."</p>
-      </div>
-      
-      <!-- Review Default 2 (Diperbarui: Menghapus unsur konsultasi) -->
-      <div class="review-card">
-        <div class="review-header">
-          <div class="review-avatar">S</div>
-          <div class="review-meta">
-            <h4>Siti Rahma</h4>
-            <div class="review-stars">★★★★☆</div>
-          </div>
-        </div>
-        <p class="review-text">"Awalnya ragu beli karena harganya murah banget, tapi ternyata isinya berbobot. Aku jadi sadar pola scroll-ku tiap malam dan sekarang udah bisa dibatasi berkat panduan dari e-book ini."</p>
-      </div>
-    </div>
-
-    <!-- Form Tambah Review -->
-    <div class="form-review-wrapper">
-      <h3 style="margin-bottom: 8px; text-align: center;">Punya pengalaman dengan FOCURA?</h3>
-      <p style="text-align: center; font-size: 14px; color: var(--muted); margin-bottom: 24px;">Bagikan reviewmu di sini sebagai bukti transaksi yang valid.</p>
-      
-      <form id="reviewForm">
-        <div class="form-group">
-          <label>Nama Kamu</label>
-          <input type="text" id="revName" class="form-control" required placeholder="Contoh: Andi Pratama">
-        </div>
-        
-        <div class="form-group">
-          <label>Rating Bintang</label>
-          <div class="star-rating" id="starContainer">
-            <span data-value="1">★</span>
-            <span data-value="2">★</span>
-            <span data-value="3">★</span>
-            <span data-value="4">★</span>
-            <span data-value="5">★</span>
-          </div>
-          <input type="hidden" id="revRating" value="5" required>
-        </div>
-
-        <div class="form-group">
-          <label>Ulasan / Testimoni</label>
-          <textarea id="revText" class="form-control" required placeholder="Tulis pengalamanmu menggunakan E-Book FOCURA..."></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Review</button>
-      </form>
     </div>
   </div>
 </section>
