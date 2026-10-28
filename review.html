@@ -35,8 +35,10 @@
       <p>Bukti nyata dari mereka yang sudah memulai perjalanan digital well-being.</p>
     </div>
 
-    <div class="review-grid" id="reviewList">
-      <!-- Review Default -->
+    <!-- Daftar Review (Bisa kamu tambah manual dari chat WA) -->
+    <div class="review-grid">
+      
+      <!-- Review 1 -->
       <div class="review-card">
         <div class="review-header">
           <div class="review-avatar">B</div>
@@ -48,6 +50,7 @@
         <p class="review-text">"E-booknya sangat relate sama kehidupan mahasiswa. Bahasanya nggak bikin stres, dan tips manajemen notifikasinya beneran ngebantu aku ngerjain skripsi dengan fokus."</p>
       </div>
       
+      <!-- Review 2 -->
       <div class="review-card">
         <div class="review-header">
           <div class="review-avatar">S</div>
@@ -58,11 +61,17 @@
         </div>
         <p class="review-text">"Awalnya ragu beli karena harganya murah banget, tapi ternyata isinya berbobot. Aku jadi sadar pola scroll-ku tiap malam dan sekarang udah bisa dibatasi berkat panduan dari e-book ini."</p>
       </div>
+      
+      <!-- Kamu bisa copy-paste blok <div class="review-card"> di atas untuk menambah review baru di sini -->
+
     </div>
 
+    <!-- Form Tambah Review (Kirim ke WA) -->
     <div class="form-review-wrapper">
       <h3 style="margin-bottom: 8px; text-align: center;">Punya pengalaman dengan FOCURA?</h3>
-      <p style="text-align: center; font-size: 14px; color: var(--muted); margin-bottom: 24px;">Bagikan reviewmu di sini sebagai bukti transaksi yang valid.</p>
+      <p style="text-align: center; font-size: 14px; color: var(--muted); margin-bottom: 24px;">
+        Bagikan reviewmu di sini. Review akan dikirim ke WhatsApp Admin untuk ditampilkan di website.
+      </p>
       
       <form id="reviewForm">
         <div class="form-group">
@@ -87,7 +96,10 @@
           <textarea id="revText" class="form-control" required placeholder="Tulis pengalamanmu menggunakan E-Book FOCURA..."></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Review</button>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="margin-right:8px;"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.94 7.94 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.54-13.58Z"/></svg>
+          Kirim Review via WhatsApp
+        </button>
       </form>
     </div>
   </div>
