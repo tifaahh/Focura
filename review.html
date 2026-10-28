@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>FOCURA — Reviews & Testimonials</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#E4EFDE"/><path d="M20 31C20 23.5 22.4 17.8 28.5 13.5C28.8 21.6 26.2 27.6 20 31Z" fill="#4A7A5C"/><path d="M20 31C20 23.5 17.6 17.8 11.5 13.5C11.2 21.6 13.8 27.6 20 31Z" fill="#7FAE87"/></svg>
+      <span class="logo-text">FOCURA</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="products.html">Product & Service</a>
+      <a href="review.html">Review</a> <!-- Menu Baru -->
+      <a href="contact.html">Contact Us</a>
+      <a href="order.html" class="btn btn-primary btn-sm">Order Now</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section section--cream" id="reviews">
+  <div class="container">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">Apa Kata Mereka?</span>
+      <h2>Testimoni Pelanggan FOCURA</h2>
+      <p>Bukti nyata dari mereka yang sudah memulai perjalanan digital well-being.</p>
+    </div>
+
+    <!-- Tempat Review akan ditampilkan oleh JavaScript -->
+    <div class="review-grid" id="reviewList">
+      <!-- Review Default (Bawaan) -->
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">B</div>
+          <div class="review-meta">
+            <h4>Budi Santoso</h4>
+            <div class="review-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="review-text">"E-booknya sangat relate sama kehidupan mahasiswa. Bahasanya nggak bikin stres, dan tips manajemen notifikasinya beneran ngebantu aku ngerjain skripsi dengan fokus."</p>
+      </div>
+      
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">S</div>
+          <div class="review-meta">
+            <h4>Siti Rahma</h4>
+            <div class="review-stars">★★★★☆</div>
+          </div>
+        </div>
+        <p class="review-text">"Awalnya ragu beli karena harganya murah banget, tapi ternyata isinya berbobot. Aku jadi sadar pola scroll-ku tiap malam dan sekarang udah bisa dibatasi berkat panduan dari e-book ini."</p>
+      </div>
+    </div>
+
+    <!-- Form Tambah Review -->
+    <div class="form-review-wrapper">
+      <h3 style="margin-bottom: 8px; text-align: center;">Punya pengalaman dengan FOCURA?</h3>
+      <p style="text-align: center; font-size: 14px; color: var(--muted); margin-bottom: 24px;">Bagikan reviewmu di sini sebagai bukti transaksi yang valid.</p>
+      
+      <form id="reviewForm">
+        <div class="form-group">
+          <label>Nama Kamu</label>
+          <input type="text" id="revName" class="form-control" required placeholder="Contoh: Andi Pratama">
+        </div>
+        
+        <div class="form-group">
+          <label>Rating Bintang</label>
+          <div class="star-rating" id="starContainer">
+            <span data-value="1">★</span>
+            <span data-value="2">★</span>
+            <span data-value="3">★</span>
+            <span data-value="4">★</span>
+            <span data-value="5">★</span>
+          </div>
+          <input type="hidden" id="revRating" value="5" required>
+        </div>
+
+        <div class="form-group">
+          <label>Ulasan / Testimoni</label>
+          <textarea id="revText" class="form-control" required placeholder="Tulis pengalamanmu menggunakan E-Book FOCURA..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Review</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 FOCURA. UTS Simulasi Bisnis Digital.</span>
+      <span>Universitas Sugeng Hartono</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
