@@ -1,12 +1,12 @@
 /* ============================================================
-   RESET & TOKENS (WARNA DIPERTEGAS)
+   RESET & TOKENS
 ============================================================ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --green-900:#1A2E22; /* Lebih gelap */
+  --green-900:#1A2E22;
   --green-800:#2A4634;
-  --green-700:#2E593F; /* Tombol utama lebih tegas */
+  --green-700:#2E593F;
   --green-600:#3E6E50;
   --green-500:#609C73;
   --green-400:#8FBE9F;
@@ -15,12 +15,11 @@
   --green-100:#E4EFDE;
   --green-50:#F1F7EE;
   
-  --cream:#FDFBF7; /* Sedikit lebih terang dari sebelumnya */
+  --cream:#FDFBF7;
   --white:#FFFFFF;
-  
-  --ink:#1B2A21; /* Teks utama hitam kehijauan */
-  --muted:#4A5C50; /* Teks sekunder lebih gelap agar kebaca */
-  --line:#CDDEC5; /* Garis batas lebih tegas */
+  --ink:#1B2A21;
+  --muted:#4A5C50;
+  --line:#CDDEC5;
 
   --shadow-sm:0 4px 16px rgba(26,46,34,.08);
   --shadow-md:0 18px 40px -18px rgba(26,46,34,.2);
@@ -41,7 +40,7 @@ body{
   font-size:16px;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
-  min-width:1024px; /* Desktop first */
+  /* min-width dihapus agar responsif */
 }
 
 img,svg{display:block;max-width:100%}
@@ -95,29 +94,34 @@ h3{font-size:18px;color:var(--green-900)}
 .btn-whatsapp{background:#1FAF54;color:#fff;box-shadow:0 8px 20px -8px rgba(31,175,84,.6)}
 .btn-whatsapp:hover{background:#158F42;transform:translateY(-2px)}
 
-.btn-light{background:#fff;color:var(--green-800)}
-.btn-light:hover{transform:translateY(-2px);background:#F4FAF1}
-
 .btn-lg{padding:16px 30px;font-size:16px}
 .btn-sm{padding:10px 20px;font-size:14px}
 
 /* ============================================================
-   NAVBAR (FIXED)
+   NAVBAR & MOBILE MENU
 ============================================================ */
 .nav{
   position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);
   backdrop-filter:blur(16px);border-bottom:1px solid var(--line);
   box-shadow:0 2px 10px rgba(0,0,0,.02);
 }
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);flex-wrap:wrap}
 
 .logo{display:inline-flex;align-items:center;gap:10px}
 .logo-mark{width:34px;height:34px}
 .logo-text{font-weight:800;font-size:18px;letter-spacing:.16em;color:var(--green-900)}
 
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: var(--green-800);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .nav-links{display:flex;align-items:center;gap:32px}
 
-/* KHUSUS LINK TEKS (Bukan Tombol) */
 .nav-links a:not(.btn) {
   font-size:15px;font-weight:600;color:var(--muted);position:relative;transition:color .2s;
 }
@@ -130,12 +134,7 @@ h3{font-size:18px;color:var(--green-900)}
 .nav-links a.is-active:not(.btn){color:var(--green-900);font-weight:800}
 .nav-links a.is-active:not(.btn)::after{width:100%}
 
-/* TOMBOL ORDER NOW DI NAVBAR */
-.nav-links .btn {
-  color: #fff !important;
-  position: relative;
-  z-index: 10;
-}
+.nav-links .btn { color: #fff !important; position: relative; z-index: 10; }
 
 /* ============================================================
    HERO (Home)
@@ -161,9 +160,7 @@ h3{font-size:18px;color:var(--green-900)}
   padding:32px;transition:transform .3s,box-shadow .3s, border-color .3s;
   box-shadow:0 4px 6px -1px rgba(0,0,0,.02);
 }
-.card:hover{
-  transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--green-400);
-}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--green-400)}
 
 .card-icon{
   width:52px;height:52px;border-radius:16px;background:var(--green-100);
@@ -171,21 +168,16 @@ h3{font-size:18px;color:var(--green-900)}
   font-size:26px;border:1px solid var(--green-300);
 }
 .card-icon svg{width:24px;height:24px}
-
 .card h3{margin-bottom:10px;font-size:20px}
 .card p{font-size:15px;color:var(--muted);line-height:1.6}
 
-/* ============================================================
-   PRODUCT / SERVICE CARDS
-============================================================ */
+/* PRODUCT CARDS */
 .product-card{
   background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
   padding:32px;display:flex;flex-direction:column;transition:all .3s;
   box-shadow:0 4px 6px -1px rgba(0,0,0,.02);
 }
-.product-card:hover{
-  transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--green-400);
-}
+.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--green-400)}
 .product-price{font-size:32px;font-weight:800;color:var(--green-800);margin:16px 0;line-height:1}
 .product-price small{font-size:15px;color:#88988E;font-weight:600;text-decoration:line-through;margin-left:8px}
 .product-features{display:grid;gap:12px;margin-bottom:28px;flex:1}
@@ -207,7 +199,7 @@ textarea.form-control{resize:vertical;min-height:120px}
 /* Receipt / Order Success */
 .receipt-box{
   background:var(--green-50);border:2px dashed var(--green-400);
-  border-radius:var(--radius-lg);padding:32px;margin-top:24px;display:none;
+  border-radius:var(--radius-lg);padding:32px;margin-top:24px;
 }
 .receipt-box h3{margin-bottom:20px;text-align:center;font-size:22px;color:var(--green-900)}
 .receipt-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--green-200);font-size:15px;color:var(--ink)}
@@ -260,7 +252,7 @@ textarea.form-control{resize:vertical;min-height:120px}
 }
 
 .review-stars {
-  color: #E5A13A; /* Warna emas lebih pekat */
+  color: #E5A13A;
   font-size: 16px;
   letter-spacing: 2px;
 }
@@ -293,91 +285,59 @@ textarea.form-control{resize:vertical;min-height:120px}
 .star-rating span.active {
   color: #E5A13A;
 }
-/* ============================================================
-   TOMBOL GOOGLE DRIVE
-============================================================ */
-.btn-drive {
-  background: #ffffff;
-  color: #1A73E8; /* Warna khas Google Drive */
-  border: 2px solid #1A73E8;
-  box-shadow: 0 4px 10px rgba(26, 115, 232, 0.1);
-  margin-top: 12px;
-  display: flex;
-  width: 100%;
-  padding: 14px 20px;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.3s;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
 
-.btn-drive:hover {
-  background: #F1F8FE;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(26, 115, 232, 0.2);
-}
-/* ============================================================
-   UPLOAD BUKTI TRANSFER
-============================================================ */
-.upload-area {
-  background: #F9FBF8;
-  border: 2px dashed var(--green-300);
-  border-radius: var(--radius-md);
-  padding: 20px;
-  text-align: center;
-  margin: 20px 0;
-  transition: all 0.3s;
-}
-.upload-area:hover {
-  border-color: var(--green-500);
-  background: var(--green-50);
-}
-.upload-area input[type="file"] {
-  display: none;
-}
-.upload-label {
-  display: inline-block;
-  cursor: pointer;
-  color: var(--green-700);
-  font-weight: 600;
-  font-size: 14px;
-}
-.upload-label svg {
-  width: 24px;
-  height: 24px;
-  margin: 0 auto 8px;
-  color: var(--green-500);
-}
-.upload-filename {
-  display: block;
-  margin-top: 10px;
-  font-size: 12px;
-  color: var(--muted);
-}
-#accessBox {
-  display: none;
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 2px dashed var(--green-300);
-  animation: fadeIn 0.5s ease;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 /* ============================================================
    FOOTER
 ============================================================ */
 .footer{background:var(--green-900);color:#B8C9BD;padding:64px 0 0}
-.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:56px;padding-bottom:44px}
-.footer .logo-text{color:#fff}
-.footer .logo-mark circle{fill:rgba(255,255,255,.12)}
-.footer-desc{margin-top:18px;font-size:14px;line-height:1.7;max-width:320px;color:#B8C9BD}
-.footer h4{color:#fff;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;font-weight:700}
-.footer ul{display:grid;gap:12px}
-.footer ul a{font-size:14px;color:#B8C9BD;transition:color .2s}
-.footer ul a:hover{color:#fff}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.15);padding:24px 0 28px;display:flex;justify-content:space-between;font-size:13px;color:#8DA394}
+
+/* ============================================================
+   MEDIA QUERIES (TAMPILAN MOBILE)
+============================================================ */
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  /* Navbar Mobile */
+  .menu-toggle { display: block; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: var(--white);
+    padding: 20px 0;
+    margin-top: 10px;
+    border-top: 1px solid var(--line);
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .nav-links.active { display: flex; }
+  .nav-links a { width: 100%; padding: 8px 16px; }
+  .nav-links .btn { margin-top: 10px; width: calc(100% - 32px); margin-left: 16px; text-align: center;}
+
+  /* Hero */
+  .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+  .hero h1 { font-size: 38px; }
+  .hero-actions { justify-content: center; flex-direction: column; width: 100%; }
+  .hero-actions .btn { width: 100%; }
+  .hero-art { max-width: 300px; margin: 0 auto; }
+  .hero-desc { margin: 0 auto 32px auto; }
+
+  /* Grids */
+  .grid-3, .grid-2, .review-grid { grid-template-columns: 1fr !important; gap: 20px; }
+
+  /* Section */
+  .section { padding: 56px 0; }
+  h2 { font-size: 28px; }
+  
+  /* Container Override untuk Order & Contact */
+  .container { padding: 0 20px; }
+
+  /* Footer */
+  .footer-bottom { flex-direction: column; text-align: center; gap: 10px; }
+  
+  /* Form Wrapper */
+  .form-review-wrapper { padding: 24px; }
+}
