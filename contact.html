@@ -19,6 +19,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="products.html">Product & Service</a>
+      <a href="review.html">Review</a>
       <a href="contact.html">Contact Us</a>
       <a href="order.html" class="btn btn-primary btn-sm">Order Now</a>
     </nav>
@@ -27,7 +28,7 @@
 
 <section class="section section--white">
   <div class="container">
-    <div class="section-head section--center">
+    <div class="section-head section-head--center">
       <span class="eyebrow">Hubungi Kami</span>
       <h2>Ada Pertanyaan?</h2>
       <p>Tim FOCURA siap membantu. Silakan hubungi kami melalui saluran di bawah ini.</p>
@@ -45,14 +46,14 @@
         </div>
         <div class="card">
           <h3>Jam Operasional</h3>
-          <p style="margin-top:10px;">Senin - Jumat: 09.00 - 17.00 WIB<br>Sabtu: 09.00 - 12.00 WIB</p>
+          <p style="margin-top:10px; color: var(--muted); font-size: 15px;">Senin - Jumat: 09.00 - 17.00 WIB<br>Sabtu: 09.00 - 12.00 WIB</p>
         </div>
       </div>
 
       <div class="card">
         <h3>Kirim Pesan</h3>
-        <p style="margin-bottom:20px; font-size:14px;">Pesanmu akan diteruskan langsung ke WhatsApp Admin.</p>
-        <form id="contactForm" onsubmit="event.preventDefault(); window.location.href='https://wa.me/6289512707276?text=' + encodeURIComponent('Halo Admin, Nama saya ' + document.getElementById('cName').value + '. ' + document.getElementById('cMsg').value);">
+        <p style="margin-bottom:20px; font-size:14px; color: var(--muted);">Pesanmu akan diteruskan langsung ke WhatsApp Admin.</p>
+        <form onsubmit="event.preventDefault(); window.location.href='https://wa.me/6289512707276?text=' + encodeURIComponent('Halo Admin, Nama saya ' + document.getElementById('cName').value + '. ' + document.getElementById('cMsg').value);">
           <div class="form-group">
             <label>Nama Lengkap</label>
             <input type="text" id="cName" class="form-control" required placeholder="Masukkan nama">
